@@ -1,0 +1,6 @@
+https://www.google.com/search?rlz=1C1GCEA_enBD862BD862&sxsrf=ALeKk02MnNQ6XF1n5YIG74IQEuBHdMZHsQ%3A1582427380297&ei=9OxRXsfYEZfG4-EPouOJ-AM&q=how+to+pass+variable+value+from+view+to+controller+in+codeigniter&oq=receive+from+view+to+controller+codeigniter&gs_l=psy-ab.1.1.0i71l8.0.0..14819...0.2..0.0.0.......0......gws-wiz.7flsOGJgR7g
+
+https://stackoverflow.com/questions/40581631/pass-variable-from-view-to-controller-in-codeigniter-using-php
+
+
+https://stackoverflow.com/questions/9821542/how-to-pass-a-variable-from-view-to-controller-in-codeigniter

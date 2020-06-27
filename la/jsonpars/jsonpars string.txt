@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/2004168/escape-quotes-in-javascript

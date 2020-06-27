@@ -1,0 +1,1 @@
+<?php require_once('https://getbootstrap.com/docs/4.4/examples/blog/index.html');

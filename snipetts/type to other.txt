@@ -1,0 +1,668 @@
+$('#wbv36b').on('input', function() {
+console.log('in');
+document.getElementById('search_box').value = this.value;
+
+});
+
+a[1]["id"]
+"gnf64f3sd2atmpkr3qhilgt50hseh0oa"
+a[1]["id"]
+"gnf64f3sd2atmpkr3qhilgt50hseh0oa"
+
+a[1]["id"].length
+32
+
+a[1]["id"].match('g')
+["g", index: 0, input: "gnf64f3sd2atmpkr3qhilgt50hseh0oa", groups: undefined]
+
+a[1]["id"].match(/gnf/ig)
+["gnf"]
+a[1]["id"].match(/_/ig)
+null
+a[1]["id"].match(/x/ig)
+null
+
+
+
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = this.responseText;
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+
+undefined
+VM14280:7 datagets
+some = JSON.parse(test)
+
+
+
+
+a[1]["id"].match(/_/ig)
+null
+a[0]["id"].match(/3/ig)
+["3"]
+a[0]["id"].match(/4j68bm3gjkinkn71nlh96j0h9jfooc9g/ig)
+["4j68bm3gjkinkn71nlh96j0h9jfooc9g"]
+a[0]["id"].match(/4j68bm3gjkinkn71nlh96j0h9jfooc9gf/ig)
+null
+
+
+/admin/requisitions/actest
+
+
+$('#myTable').DataTable( {
+    ajax: '/api/myData'
+} );
+
+
+document.write( $(this).load("/admin/requisitions/actest/"));
+
+
+
+(function () {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.write( this.responseText);
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+}());
+
+
+
+
+(function () {
+var test = null;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = this.responseText;
+console.log(test);
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+}());
+
+
+
+var test = null;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = this.responseText;
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+
+
+
+
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+
+console.log(test[id]['id']);
+
+}
+VM852:5 ra6k9dc8d3viacaqpf7qam210ncv2g8i
+VM852:5 bdo5m8r0vcc6pvs4ocfl3q72l4mh9d7h
+VM852:5 5je0e0a68uphu33e6jne8qreigvccs8g
+VM852:5 p79kkg8v2uvgm91mb7e4stuv2aufvovl
+VM852:5 k3h1d5hn13k3134qsnl3g0c51qedm37m
+VM852:5 1mnkgj1uk531ili6c8efeetla57mnorb
+VM852:5 qbgbvdl8m6i89h8tj4bcfpujv8evl4l5
+VM852:5 p4i4s3civumsrii7m3k34glklcts552u
+VM852:5 03derdps0t7uejq0tdqiik15hmqg8kne
+VM852:5 u44evqqrrgnfs3u8gvonkdf98lciid49
+VM852:5 1onft57cbp9jd74kta0m9kh94hl3sih2
+VM852:5 kvjggoc8qg380dl6a4eegtngjsu741i8
+VM852:5 8it3b1fs0gr0u2kqh3gu2o616r3bfgv3
+VM852:5 dvio8lnhecq87mvdd4pkjt5ohilc16pp
+VM852:5 heotthon5rd7afu1li0cg99r8542i4n9
+VM852:5 l9r1ckts792dil1efpaseq69df2q6gpu
+VM852:5 fk82ncj5ujtoi5tu8jefqomrkpkhe5v4
+VM852:5 6ehols83r06j4439sa1gvpqfsju681b7
+VM852:5 pfupf056mv43fpnvk2c7rgsiiib9anhj
+
+
+
+
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /gnf/ig;
+console.log(test[id]['id'].match(ms));
+
+}
+
+
+test[0].id
+
+
+
+
+
+
+
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+
+undefined
+VM1907:7 datagets
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig;
+console.log(test[id]['id'].match(ms));
+
+}
+VM1954:5 ["g"]
+VM1954:5 null
+VM1954:5 (2) ["g", "g"]
+VM1954:5 (2) ["g", "g"]
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 (2) ["g", "g"]
+VM1954:5 null
+VM1954:5 (5) ["g", "g", "g", "g", "g"]
+VM1954:5 (3) ["g", "g", "g"]
+VM1954:5 null
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 null
+VM1954:5 ["g"]
+VM1954:5 ["g"]
+VM1954:5 null
+VM1954:5 ["g"]
+undefined
+
+
+
+
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+
+undefined
+VM2099:7 datagets
+test[2].id
+"5je0e0a68uphu33e6jne8qreigvccs8g"
+test[3].id
+"p79kkg8v2uvgm91mb7e4stuv2aufvovl"
+var ms = /g/ig; 
+test[3].id.test(ms);
+VM2247:2 Uncaught TypeError: test[3].id.test is not a function
+    at <anonymous>:2:12
+(anonymous) @ VM2247:2
+var ms = /g/ig; 
+test[3].id.test;
+undefined
+var ms = /g/ig; 
+test(test[3].id);
+VM2286:2 Uncaught TypeError: test is not a function
+    at <anonymous>:2:1
+(anonymous) @ VM2286:2
+ms.test(test[3].id);
+true
+
+
+
+
+
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig; 
+console.log(ms.test(test[3].id));
+
+}
+22VM2519:5 true
+undefined
+
+
+
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig; 
+console.log(ms.test(test[id].id));
+
+
+}
+VM2543:5 true
+VM2543:5 false
+8VM2543:5 true
+VM2543:5 false
+2VM2543:5 true
+VM2543:5 false
+2VM2543:5 true
+VM2543:5 false
+2VM2543:5 true
+VM2543:5 false
+VM2543:5 true
+VM2543:5 false
+undefined
+
+
+
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig; 
+console.log(ms.test(test[id].id));
+
+if(ms.test(test[id].id) === true) {
+
+console.log('from if');
+}
+
+
+}
+
+
+this sets is perfect sym with like browser search
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+undefined
+VM2895:6 datagets
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig;
+console.log(test[id]['id'].match(ms));
+
+}
+VM2901:5 ["g"]
+VM2901:5 null
+VM2901:5 (2) ["g", "g"]0: "g"1: "g"length: 2__proto__: Array(0)
+VM2901:5 (2) ["g", "g"]
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 (2) ["g", "g"]
+VM2901:5 null
+VM2901:5 (5) ["g", "g", "g", "g", "g"]
+VM2901:5 (3) ["g", "g", "g"]
+VM2901:5 null
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 null
+VM2901:5 ["g"]
+VM2901:5 ["g"]
+VM2901:5 null
+VM2901:5 ["g"]
+VM2901:5 null
+VM2901:5 (4) ["g", "g", "g", "g"]
+undefined
+
+this sets is perfect sym with like browser search
+
+
+test[1].id
+"bdo5m8r0vcc6pvs4ocfl3q72l4mh9d7h"
+test[1].id.match(/g/ig)
+null
+test[1].id.match(/g/ig)
+null
+test[0].id.match(/g/ig)
+["g"]
+test[0].id.match(/g/ig)
+["g"]
+test[2].id.match(/g/ig)
+(2) ["g", "g"]
+test[3].id.match(/g/ig)
+(2) ["g", "g"]
+test[4].id.match(/g/ig)
+["g"]
+test[0].id.match(/b/ig)
+null
+if ( test[0].id.match(/b/ig === null ) ) { console.log ( false ) }
+undefined
+if ( test[0].id.match(/b/ig === null ) ) { console.log ( false ) }
+undefined
+if ( test[0].id.match(/b/ig === null ) ) { console.log ( 'no match' ) }
+undefined
+
+
+
+
+
+
+
+another awesome match
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+undefined
+VM22194:6 datagets
+var id;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+var ms = /g/ig;
+
+take = test[id]['id'].match(ms);
+console.log(take);
+
+
+}
+VM22198:7 ["g"]
+VM22198:7 null
+VM22198:7 (2) ["g", "g"]
+VM22198:7 (2) ["g", "g"]
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 (2) ["g", "g"]
+VM22198:7 null
+VM22198:7 (5) ["g", "g", "g", "g", "g"]
+VM22198:7 (3) ["g", "g", "g"]
+VM22198:7 null
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 null
+VM22198:7 ["g"]
+VM22198:7 ["g"]
+VM22198:7 null
+VM22198:7 ["g"]
+VM22198:7 null
+VM22198:7 (4) ["g", "g", "g", "g"]
+VM22198:7 (3) ["g", "g", "g"]
+VM22198:7 (2) ["g", "g"]
+undefined
+
+
+
+
+
+
+
+
+
+var id;
+var ms = /g/ig;
+var take;
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+if ( test[id]['id'].match(ms) === null ) {
+console.log('from if');
+
+}
+else {
+
+console.log(test[id]['id'].match(ms));
+
+
+}
+//take = test[id]['id'].match(ms);
+//console.log(take);
+
+
+
+}
+VM22367:12 ["g"]
+VM22367:7 from if
+VM22367:12 (2) ["g", "g"]
+VM22367:12 (2) ["g", "g"]
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:12 (2) ["g", "g"]
+VM22367:7 from if
+VM22367:12 (5) ["g", "g", "g", "g", "g"]
+VM22367:12 (3) ["g", "g", "g"]
+VM22367:7 from if
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:7 from if
+VM22367:12 ["g"]
+VM22367:12 ["g"]
+VM22367:7 from if
+VM22367:12 ["g"]
+VM22367:7 from if
+VM22367:12 (4) ["g", "g", "g", "g"]
+VM22367:12 (3) ["g", "g", "g"]
+VM22367:12 (2) ["g", "g"]
+undefined
+
+test[0].id === test[0]['id'] 
+true
+test[0]['id'].match(/g/ig) === null
+false
+test[0]['id'].match(/b/ig) === null
+true
+
+var mch = test[0]['id'];
+
+if ( mch.match(/b/ig) === null ) {
+
+console.log( mch );
+
+}
+
+
+VM22769:5 ra6k9dc8d3viacaqpf7qam210ncv2g8i
+undefined
+var mch = test[0]['id'];
+
+if ( mch.match(/b/ig) === null ) {
+
+console.log( this );
+
+}
+
+
+VM22802:5 Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
+
+
+
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+undefined
+VM22985:6 datagets
+test
+(28) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+var mch = test[0]['id'];
+
+var mch = test[0]['id'];
+
+if ( mch.match(/b/ig) === null ) {
+
+console.log( mch );
+
+}
+VM23018:5 ra6k9dc8d3viacaqpf7qam210ncv2g8i
+undefined
+
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+var id = 0;
+var mch = test[id]['id'];
+
+if ( mch.match(/b/ig) === null ) {
+
+console.log( mch );
+
+}
+VM23084:16 ra6k9dc8d3viacaqpf7qam210ncv2g8i
+undefined
+VM23084:6 datagets
+
+
+
+
+var test;
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+
+    if ( this.readyState == 4 && this.status == 200 ) {
+
+      test = JSON.parse(this.responseText);
+
+console.log('datagets');
+
+    }
+
+  };
+
+  xhttp.open ( "GET", "/admin/requisitions/actest/", true );
+
+  xhttp.send();
+
+var id = 0;
+
+var mch = test[id].id;
+
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+if ( mch.match(/b/ig) === null ) {
+
+console.log( mch + '<br>' );
+
+}
+
+}
+
+
+
+var test;
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+
+    if ( this.readyState == 4 && this.status == 200 ) {
+
+      test = JSON.parse(this.responseText);
+
+console.log('datagets');
+
+    }
+
+  };
+
+  xhttp.open ( "GET", "/admin/requisitions/actest/", true );
+
+  xhttp.send();
+
+var id = 0;
+
+var mch = test[id].id;
+
+for ( id  = 0 ; id < test.length ; id ++ ) {
+
+if ( mch.match(/b/ig) === null ) {
+
+document.write( mch + '<br>' );
+
+}
+
+}
+
+test: 'some'
+"some"
+test: id:1
+1
+test: id: some : 1
+1
+
+
+var test;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      test = JSON.parse(this.responseText);
+console.log('datagets');
+    }
+  };
+  xhttp.open("GET", "/admin/requisitions/actest/", true);
+  xhttp.send();
+undefined
+VM25230:6 datagets
+var z = 0;
+undefined
+test[z].id
+"ra6k9dc8d3viacaqpf7qam210ncv2g8i"
+test.length
+34
+test.length - test.length
+0

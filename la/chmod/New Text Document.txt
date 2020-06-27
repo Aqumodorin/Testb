@@ -1,0 +1,5 @@
+https://vexxhost.com/resources/tutorials/fixing-403-forbidden-nginx-errors/
+
+
+
+https://stackoverflow.com/questions/19433382/codeigniter-the-upload-destination-folder-does-not-appear-to-be-writable

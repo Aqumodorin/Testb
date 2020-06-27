@@ -1,0 +1,30 @@
+div#topbar {
+    width: 100%;
+    padding: 31px;
+/*    border: 1px solid #c1c1c1;*/
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #e9ebee;
+    color: #1d2129;
+}
+
+div#cord {
+    width: 50%;
+    margin: 20% 20%;
+    padding: 1%;
+    display: block;
+    background: white;
+}
+
+
+div#cord2 {
+    width: 50%;
+    margin: 20% 20%;
+    padding: 1%;
+    display: block;
+    background: white;
+}

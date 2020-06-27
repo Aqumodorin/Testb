@@ -1,0 +1,13 @@
+If everything was installed via the yum package manager, you can undo previous commands:
+
+# Get all yum commands previously run
+yum history list all
+
+# Get the details of the command
+yum history info [entry number]
+
+# Undo each command top-down
+yum history undo [entry number]
+Just be careful not to undo the initial system install!
+
+https://unix.stackexchange.com/questions/344231/completely-restore-centos-7-as-it-was-on-first-installation-factory-reset

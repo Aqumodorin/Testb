@@ -1,0 +1,51 @@
+window loads
+var some = document.getElementById('infobox');
+undefined
+some
+<div id=​"infobox">​<h1>​ssqrl06ldnje02fjh5cp1ed5m4vbdc6r​</h1>​</div>​
+some.h1
+undefined
+some:h1
+VM2849:1 Uncaught ReferenceError: h1 is not defined
+    at <anonymous>:1:6
+(anonymous) @ VM2849:1
+some.children
+HTMLCollection [h1]
+
+
+
+
+
+window loads
+var some = document.getElementById('infobox');
+undefined
+some.children
+HTMLCollection [h1]
+some.children[0]
+<h1>​ssqrl06ldnje02fjh5cp1ed5m4vbdc6r​</h1>​
+var test = document.getElementById('wbv36b');
+undefined
+test.value = 'testing'
+"testing"
+some.children[0].onclick = function() {
+
+test.value = 'testing';
+
+}
+ƒ () {
+
+test.value = 'testing';
+
+}
+some.children[0].onclick = function() {
+
+test.value = 'testing testing';
+
+}
+ƒ () {
+
+test.value = 'testing testing';
+
+}
+add:1266 clicked
+add:1275 wr

@@ -1,0 +1,13 @@
+div#mainHeader2017 {
+    width: 851px;
+    background-color: #04161f;
+    position: relative;
+    height: 315px;
+    margin: 0 17%;
+    text-align: center;
+    color: #133350;
+}
+
+div#mainHeader2017 h1 a {
+    color: #efc9af;
+}

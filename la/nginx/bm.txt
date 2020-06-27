@@ -1,0 +1,9 @@
+http://nginx.org/en/docs/dirindex.html
+
+http://nginx.org/en/docs/http/ngx_http_index_module.html
+
+https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
+
+https://nginx.org/en/docs/http/ngx_http_autoindex_module.html?&_ga=2.226717981.1055655127.1581482046-42210968.1581482046#autoindex
+
+https://github.com/JohnTroony/php-webshells

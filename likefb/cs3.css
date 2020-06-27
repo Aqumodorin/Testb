@@ -1,0 +1,44 @@
+div#MainSection {
+    width: 100%;
+    background: red;
+    position: absolute;
+    margin: 0;
+}
+
+div#boxSet {
+    width: 95%;
+    /* height: 279px; */
+    background: rebeccapurple;
+    position: relative;
+    margin: 2% 2%;
+    padding: 1px;
+}
+
+div#boxSet div {
+    
+display: inline-block;
+}
+
+div#box1 {
+    width: 25%;
+/*    height: 226px;*/
+    background: aqua;
+/*    position: relative;*/
+}
+
+
+div#box2 {
+    width: 44%;
+    /* height: 226px; */
+    background: blue;
+    margin: 0 22px;
+/*    position: relative;*/
+}
+
+
+div#box3 {
+    width: 26%;
+/*    height: 226px;*/
+    background: green;
+/*    position: relative;*/
+}

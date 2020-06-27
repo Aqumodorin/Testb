@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/9324583/why-jquery-javascript-code-get-conflict-with-other-jquery-javascript

@@ -1,0 +1,33 @@
+body {
+    background: lightgrey;
+}
+
+.text-set {position: absolute;}
+
+.block div.box-set {
+    /* position: absolute; */
+    margin: 5% 11%;
+}
+
+.box-set div {
+    
+display: inline-block;
+    
+/*padding: 1%;*/
+    
+    margin: 1%;
+    
+background: white;
+    
+border-radius: 3px;
+}
+
+div#left-side {
+    margin-right: 6px;
+}
+
+div#right-side {float: right ;}
+
+.text-set {
+    width: 62% ;
+}

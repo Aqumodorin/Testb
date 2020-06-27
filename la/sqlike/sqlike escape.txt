@@ -1,0 +1,1 @@
+https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/like-predicate-escape-character?view=sql-server-ver15

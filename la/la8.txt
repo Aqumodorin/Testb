@@ -1,0 +1,23 @@
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7
+
+https://www.youtube.com/watch?v=9ELQS078pDM
+
+Codeigniter + Nginx configuration on Ubuntu 16.04
+5,976 views Apr 4, 2017
+
+16
+
+3
+
+SHARE
+
+SAVE
+
+
+A. Hasbiyatmoko
+2.9K subscribers
+i'm confused, when trying to migrate (codeigniter) from apache to nginx. Just so you know, Nginx not support .htaccess, huftt.
+
+When i trying to open http://ci/contollers, it showing error, 404 not found. 
+
+i'm searching on google how to create 'rule' like htacess, and i got it.., so i create 'rule' on nginx server block (file : /etc/nginx/sites-available/default) .. restart nginx and ci works!

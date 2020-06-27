@@ -1,0 +1,38 @@
+var text = "";
+var i = 0;
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 5);
+4
+a = [{"code":"FFR01","name":"Grapefruit"},{"code":"FFR02","name":"Kiwi"},{"code":"FFR03","name":"Lemon"},{"code":"FFR04","name":"Lime"},{"code":"FFR05","name":"Strawberry"},{"code":"FFR06","name":"Watermelon"},{"code":"FFR07","name":"Yellow Watermelon"},{"code":"IT01","name":"Canon 1100d"},{"code":"IT02","name":"Computer Set 1"},{"code":"IT03","name":"Computer Set 2"}];
+(10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+b = a.length - a.length
+0
+var text = "";
+
+do {
+  text += "The number is " + b;
+  b++;
+}
+while (b < a.length);
+9
+var text = "";
+
+do {
+  text += "The number is " + a[b].code;
+  a[b++].code;
+}
+while (b < a.length);
+VM2455:4 Uncaught TypeError: Cannot read property 'code' of undefined
+    at <anonymous>:4:35
+(anonymous) @ VM2455:4
+var text = "";
+
+do {
+  text += "The number is " + b;
+  b++;
+}
+while (b < a.length);
+10

@@ -1,0 +1,70 @@
+
+C:\Users\tester\Desktop\practice\python\lists
+λ python
+Python 2.7.17 (v2.7.17:c2f86d86e6, Oct 19 2019, 21:01:17) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> open('new.txt',w+)
+  File "<stdin>", line 1
+    open('new.txt',w+)
+                     ^
+SyntaxError: invalid syntax
+>>> open('new.txt','w+')
+<open file 'new.txt', mode 'w+' at 0x0000000003014150>
+>>> file = open('new.txt')
+>>> file.mode
+'r'
+>>> file = open('new2.txt')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: [Errno 2] No such file or directory: 'new2.txt'
+>>> file = open('new.txt')
+>>> file.mode
+'r'
+>>> file.write('salam')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: File not open for writing
+>>> file = open('new.txt')
+>>> file.seek(0)
+>>> file.write('salam')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: File not open for writing
+>>> file
+<open file 'new.txt', mode 'r' at 0x00000000030141E0>
+>>> file.seek(0)
+>>> file.read()
+''
+>>> file.write('salam')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: File not open for writing
+>>> file.write('salam','w+')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: File not open for writing
+>>> file = open('new.txt','w+')
+>>> file.write('salam')
+>>> file.read()
+'\x00\x00\.....
+>>> file.seek(0)
+>>> file.write('salam')
+>>> file = open('new.txt')
+>>> file.read()
+'salam\x00\x00.....
+>>> file.write('salam')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: File not open for writing
+>>> import os
+>>> os.remove("demofile.txt")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+WindowsError: [Error 2] The system cannot find the file specified: 'demofile.txt'
+>>> os.remove("new.txt")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process: 'new.txt'
+>>> file.close()
+>>> os.remove("new.txt")
+>>>

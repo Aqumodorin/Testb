@@ -1,0 +1,5 @@
+https://www.w3resource.com/mysql/string-functions/mysql-locate-function.php
+
+https://dba.stackexchange.com/questions/203206/find-if-any-of-the-rows-partially-match-a-string
+
+https://www.youtube.com/watch?v=la9fmUKqS3E

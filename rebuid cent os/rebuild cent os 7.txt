@@ -1,0 +1,3 @@
+reinstall CentOS 7
+
+https://www.digitalocean.com/community/questions/how-can-i-reinstall-centos-7

@@ -1,0 +1,15 @@
+div#MainSection {
+    width: 100%;
+    background: aquamarine;
+}
+div#boxSet {
+    width: 88%;
+    background: #c74a8f;
+}
+
+
+div#boxSet div {
+    width: 30%; 
+    display: inline-block;
+    border: 1px solid white;
+}

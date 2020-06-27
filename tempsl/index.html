@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///D:/Adobe_Illustrator_CC_Learn_by_Video/ -->
+<html dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="google" value="notranslate">
+
+<script>
+function addRow(name, url, isdir,
+    size, size_string, date_modified, date_modified_string) {
+  if (name == "." || name == "..")
+    return;
+
+  var root = document.location.pathname;
+  if (root.substr(-1) !== "/")
+    root += "/";
+
+  var tbody = document.getElementById("tbody");
+  var row = document.createElement("tr");
+  var file_cell = document.createElement("td");
+  var link = document.createElement("a");
+
+  link.className = isdir ? "icon dir" : "icon file";
+
+  if (isdir) {
+    name = name + "/";
+    url = url + "/";
+    size = 0;
+    size_string = "";
+  } else {
+    link.draggable = "true";
+    link.addEventListener("dragstart", onDragStart, false);
+  }
+  link.innerText = name;
+  link.href = root + url;
+
+  file_cell.dataset.value = name;
+  file_cell.appendChild(link);
+
+  row.appendChild(file_cell);
+  row.appendChild(createCell(size, size_string));
+  row.appendChild(createCell(date_modified, date_modified_string));
+
+  tbody.appendChild(row);
+}
+
+function onDragStart(e) {
+  var el = e.srcElement;
+  var name = el.innerText.replace(":", "");
+  var download_url_data = "application/octet-stream:" + name + ":" + el.href;
+  e.dataTransfer.setData("DownloadURL", download_url_data);
+  e.dataTransfer.effectAllowed = "copy";
+}
+
+function createCell(value, text) {
+  var cell = document.createElement("td");
+  cell.setAttribute("class", "detailsColumn");
+  cell.dataset.value = value;
+  cell.innerText = text;
+  return cell;
+}
+
+function start(location) {
+  var header = document.getElementById("header");
+  header.innerText = header.innerText.replace("LOCATION", location);
+
+  document.getElementById("title").innerText = header.innerText;
+}
+
+function onHasParentDirectory() {
+  var box = document.getElementById("parentDirLinkBox");
+  box.style.display = "block";
+
+  var root = document.location.pathname;
+  if (!root.endsWith("/"))
+    root += "/";
+
+  var link = document.getElementById("parentDirLink");
+  link.href = root + "..";
+}
+
+function onListingParsingError() {
+  var box = document.getElementById("listingParsingErrorBox");
+  box.innerHTML = box.innerHTML.replace("LOCATION", encodeURI(document.location)
+      + "?raw");
+  box.style.display = "block";
+}
+
+function sortTable(column) {
+  var theader = document.getElementById("theader");
+  var oldOrder = theader.cells[column].dataset.order || '1';
+  oldOrder = parseInt(oldOrder, 10)
+  var newOrder = 0 - oldOrder;
+  theader.cells[column].dataset.order = newOrder;
+
+  var tbody = document.getElementById("tbody");
+  var rows = tbody.rows;
+  var list = [], i;
+  for (i = 0; i < rows.length; i++) {
+    list.push(rows[i]);
+  }
+
+  list.sort(function(row1, row2) {
+    var a = row1.cells[column].dataset.value;
+    var b = row2.cells[column].dataset.value;
+    if (column) {
+      a = parseInt(a, 10);
+      b = parseInt(b, 10);
+      return a > b ? newOrder : a < b ? oldOrder : 0;
+    }
+
+    // Column 0 is text.
+    if (a > b)
+      return newOrder;
+    if (a < b)
+      return oldOrder;
+    return 0;
+  });
+
+  // Appending an existing child again just moves it.
+  for (i = 0; i < list.length; i++) {
+    tbody.appendChild(list[i]);
+  }
+}
+
+// Add event handlers to column headers.
+function addHandlers(element, column) {
+  element.onclick = (e) => sortTable(column);
+  element.onkeydown = (e) => {
+    if (e.key == 'Enter' || e.key == ' ') {
+      sortTable(column);
+      e.preventDefault();
+    }
+  };
+}
+
+function onLoad() {
+  addHandlers(document.getElementById('nameColumnHeader'), 0);
+  addHandlers(document.getElementById('sizeColumnHeader'), 1);
+  addHandlers(document.getElementById('dateColumnHeader'), 2);
+}
+
+window.addEventListener('DOMContentLoaded', onLoad);
+</script>
+
+<style>
+
+  h1 {
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th {
+    cursor: pointer;
+  }
+
+  td.detailsColumn {
+    -webkit-padding-start: 2em;
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  a.icon {
+    -webkit-padding-start: 1.5em;
+    text-decoration: none;
+  }
+
+  a.icon:hover {
+    text-decoration: underline;
+  }
+
+  a.file {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABHUlEQVR42o2RMW7DIBiF3498iHRJD5JKHurL+CRVBp+i2T16tTynF2gO0KSb5ZrBBl4HHDBuK/WXACH4eO9/CAAAbdvijzLGNE1TVZXfZuHg6XCAQESAZXbOKaXO57eiKG6ft9PrKQIkCQqFoIiQFBGlFIB5nvM8t9aOX2Nd18oDzjnPgCDpn/BH4zh2XZdlWVmWiUK4IgCBoFMUz9eP6zRN75cLgEQhcmTQIbl72O0f9865qLAAsURAAgKBJKEtgLXWvyjLuFsThCSstb8rBCaAQhDYWgIZ7myM+TUBjDHrHlZcbMYYk34cN0YSLcgS+wL0fe9TXDMbY33fR2AYBvyQ8L0Gk8MwREBrTfKe4TpTzwhArXWi8HI84h/1DfwI5mhxJamFAAAAAElFTkSuQmCC ") left top no-repeat;
+  }
+
+  a.dir {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAd5JREFUeNqMU79rFUEQ/vbuodFEEkzAImBpkUabFP4ldpaJhZXYm/RiZWsv/hkWFglBUyTIgyAIIfgIRjHv3r39MePM7N3LcbxAFvZ2b2bn22/mm3XMjF+HL3YW7q28YSIw8mBKoBihhhgCsoORot9d3/ywg3YowMXwNde/PzGnk2vn6PitrT+/PGeNaecg4+qNY3D43vy16A5wDDd4Aqg/ngmrjl/GoN0U5V1QquHQG3q+TPDVhVwyBffcmQGJmSVfyZk7R3SngI4JKfwDJ2+05zIg8gbiereTZRHhJ5KCMOwDFLjhoBTn2g0ghagfKeIYJDPFyibJVBtTREwq60SpYvh5++PpwatHsxSm9QRLSQpEVSd7/TYJUb49TX7gztpjjEffnoVw66+Ytovs14Yp7HaKmUXeX9rKUoMoLNW3srqI5fWn8JejrVkK0QcrkFLOgS39yoKUQe292WJ1guUHG8K2o8K00oO1BTvXoW4yasclUTgZYJY9aFNfAThX5CZRmczAV52oAPoupHhWRIUUAOoyUIlYVaAa/VbLbyiZUiyFbjQFNwiZQSGl4IDy9sO5Wrty0QLKhdZPxmgGcDo8ejn+c/6eiK9poz15Kw7Dr/vN/z6W7q++091/AQYA5mZ8GYJ9K0AAAAAASUVORK5CYII= ") left top no-repeat;
+  }
+
+  a.up {
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAmlJREFUeNpsU0toU0EUPfPysx/tTxuDH9SCWhUDooIbd7oRUUTMouqi2iIoCO6lceHWhegy4EJFinWjrlQUpVm0IIoFpVDEIthm0dpikpf3ZuZ6Z94nrXhhMjM3c8895977BBHB2PznK8WPtDgyWH5q77cPH8PpdXuhpQT4ifR9u5sfJb1bmw6VivahATDrxcRZ2njfoaMv+2j7mLDn93MPiNRMvGbL18L9IpF8h9/TN+EYkMffSiOXJ5+hkD+PdqcLpICWHOHc2CC+LEyA/K+cKQMnlQHJX8wqYG3MAJy88Wa4OLDvEqAEOpJd0LxHIMdHBziowSwVlF8D6QaicK01krw/JynwcKoEwZczewroTvZirlKJs5CqQ5CG8pb57FnJUA0LYCXMX5fibd+p8LWDDemcPZbzQyjvH+Ki1TlIciElA7ghwLKV4kRZstt2sANWRjYTAGzuP2hXZFpJ/GsxgGJ0ox1aoFWsDXyyxqCs26+ydmagFN/rRjymJ1898bzGzmQE0HCZpmk5A0RFIv8Pn0WYPsiu6t/Rsj6PauVTwffTSzGAGZhUG2F06hEc9ibS7OPMNp6ErYFlKavo7MkhmTqCxZ/jwzGA9Hx82H2BZSw1NTN9Gx8ycHkajU/7M+jInsDC7DiaEmo1bNl1AMr9ASFgqVu9MCTIzoGUimXVAnnaN0PdBBDCCYbEtMk6wkpQwIG0sn0PQIUF4GsTwLSIFKNqF6DVrQq+IWVrQDxAYQC/1SsYOI4pOxKZrfifiUSbDUisif7XlpGIPufXd/uvdvZm760M0no1FZcnrzUdjw7au3vu/BVgAFLXeuTxhTXVAAAAAElFTkSuQmCC ") left top no-repeat;
+  }
+
+  html[dir=rtl] a {
+    background-position-x: right;
+  }
+
+  #parentDirLinkBox {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  #listingParsingErrorBox {
+    border: 1px solid black;
+    background: #fae691;
+    padding: 10px;
+    display: none;
+  }
+</style>
+
+<title id="title">Index of D:\Adobe_Illustrator_CC_Learn_by_Video\</title>
+
+</head>
+
+<body>
+
+<div id="listingParsingErrorBox">Oh, no! This server is sending data Google Chrome can't understand. Please <a href="http://code.google.com/p/chromium/issues/entry">report a bug</a>, and include the <a href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/LOCATION">raw listing</a>.</div>
+
+<h1 id="header">Index of D:\Adobe_Illustrator_CC_Learn_by_Video\</h1>
+
+<div id="parentDirLinkBox" style="display: block;">
+  <a id="parentDirLink" class="icon up" href="file:///D:/">
+    <span id="parentDirText">[parent directory]</span>
+  </a>
+</div>
+
+<table>
+  <thead>
+    <tr class="header" id="theader">
+      <th id="nameColumnHeader" tabindex="0" role="button">Name</th>
+      <th id="sizeColumnHeader" class="detailsColumn" tabindex="0" role="button">
+        Size
+      </th>
+      <th id="dateColumnHeader" class="detailsColumn" tabindex="0" role="button">
+        Date Modified
+      </th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+  <tr><td data-value="project_files/"><a class="icon dir" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/project_files/">project_files/</a></td><td class="detailsColumn" data-value="0"></td><td class="detailsColumn" data-value="1381257739">10/9/13, 12:42:19 AM</td></tr><tr><td data-value="001.Welcome Movie.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/001.Welcome%20Movie.mp4">001.Welcome Movie.mp4</a></td><td class="detailsColumn" data-value="28485741">27.2 MB</td><td class="detailsColumn" data-value="1373548188">7/11/13, 7:09:48 PM</td></tr><tr><td data-value="002.What Is Illustrator-.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/002.What%20Is%20Illustrator-.mp4">002.What Is Illustrator-.mp4</a></td><td class="detailsColumn" data-value="1414531">1.3 MB</td><td class="detailsColumn" data-value="1373542882">7/11/13, 5:41:22 PM</td></tr><tr><td data-value="003.Raster vs. Vector.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/003.Raster%20vs.%20Vector.mp4">003.Raster vs. Vector.mp4</a></td><td class="detailsColumn" data-value="3022853">2.9 MB</td><td class="detailsColumn" data-value="1373542886">7/11/13, 5:41:26 PM</td></tr><tr><td data-value="004.Working with the Exercise Files (Graphics and Fonts).mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/004.Working%20with%20the%20Exercise%20Files%20(Graphics%20and%20Fonts).mp4">004.Working with the Exercise Files (Graphics and Fonts).mp4</a></td><td class="detailsColumn" data-value="7353363">7.0 MB</td><td class="detailsColumn" data-value="1373542892">7/11/13, 5:41:32 PM</td></tr><tr><td data-value="005.Illustrator Panels.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/005.Illustrator%20Panels.mp4">005.Illustrator Panels.mp4</a></td><td class="detailsColumn" data-value="7041513">6.7 MB</td><td class="detailsColumn" data-value="1373542946">7/11/13, 5:42:26 PM</td></tr><tr><td data-value="006.The Application Frame and Application Bar.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/006.The%20Application%20Frame%20and%20Application%20Bar.mp4">006.The Application Frame and Application Bar.mp4</a></td><td class="detailsColumn" data-value="15673510">14.9 MB</td><td class="detailsColumn" data-value="1373542986">7/11/13, 5:43:06 PM</td></tr><tr><td data-value="007.Utilizing Workspaces.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/007.Utilizing%20Workspaces.mp4">007.Utilizing Workspaces.mp4</a></td><td class="detailsColumn" data-value="9986223">9.5 MB</td><td class="detailsColumn" data-value="1373542994">7/11/13, 5:43:14 PM</td></tr><tr><td data-value="008.Working with Artboards.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/008.Working%20with%20Artboards.mp4">008.Working with Artboards.mp4</a></td><td class="detailsColumn" data-value="13847227">13.2 MB</td><td class="detailsColumn" data-value="1373543034">7/11/13, 5:43:54 PM</td></tr><tr><td data-value="009.Making the Most of Artboards.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/009.Making%20the%20Most%20of%20Artboards.mp4">009.Making the Most of Artboards.mp4</a></td><td class="detailsColumn" data-value="19964328">19.0 MB</td><td class="detailsColumn" data-value="1373543046">7/11/13, 5:44:06 PM</td></tr><tr><td data-value="010.Sync Settings.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/010.Sync%20Settings.mp4">010.Sync Settings.mp4</a></td><td class="detailsColumn" data-value="6519218">6.2 MB</td><td class="detailsColumn" data-value="1373543072">7/11/13, 5:44:32 PM</td></tr><tr><td data-value="011.Creating a New Illustrator Document.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/011.Creating%20a%20New%20Illustrator%20Document.mp4">011.Creating a New Illustrator Document.mp4</a></td><td class="detailsColumn" data-value="6776904">6.5 MB</td><td class="detailsColumn" data-value="1373543088">7/11/13, 5:44:48 PM</td></tr><tr><td data-value="012.Creating a New Document Profile.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/012.Creating%20a%20New%20Document%20Profile.mp4">012.Creating a New Document Profile.mp4</a></td><td class="detailsColumn" data-value="10428909">9.9 MB</td><td class="detailsColumn" data-value="1373543096">7/11/13, 5:44:56 PM</td></tr><tr><td data-value="013.Creating an Illustrator Template.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/013.Creating%20an%20Illustrator%20Template.mp4">013.Creating an Illustrator Template.mp4</a></td><td class="detailsColumn" data-value="14898211">14.2 MB</td><td class="detailsColumn" data-value="1373543162">7/11/13, 5:46:02 PM</td></tr><tr><td data-value="014.Saving an Illustrator File.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/014.Saving%20an%20Illustrator%20File.mp4">014.Saving an Illustrator File.mp4</a></td><td class="detailsColumn" data-value="14182364">13.5 MB</td><td class="detailsColumn" data-value="1373543200">7/11/13, 5:46:40 PM</td></tr><tr><td data-value="015.Saving for the Web.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/015.Saving%20for%20the%20Web.mp4">015.Saving for the Web.mp4</a></td><td class="detailsColumn" data-value="20845358">19.9 MB</td><td class="detailsColumn" data-value="1373543270">7/11/13, 5:47:50 PM</td></tr><tr><td data-value="016.Using Adobe Bridge.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/016.Using%20Adobe%20Bridge.mp4">016.Using Adobe Bridge.mp4</a></td><td class="detailsColumn" data-value="16685027">15.9 MB</td><td class="detailsColumn" data-value="1373543326">7/11/13, 5:48:46 PM</td></tr><tr><td data-value="017.Document Navigation Techniques.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/017.Document%20Navigation%20Techniques.mp4">017.Document Navigation Techniques.mp4</a></td><td class="detailsColumn" data-value="62049363">59.2 MB</td><td class="detailsColumn" data-value="1373543470">7/11/13, 5:51:10 PM</td></tr><tr><td data-value="018.Illustrator Viewing Modes.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/018.Illustrator%20Viewing%20Modes.mp4">018.Illustrator Viewing Modes.mp4</a></td><td class="detailsColumn" data-value="13996862">13.3 MB</td><td class="detailsColumn" data-value="1373543512">7/11/13, 5:51:52 PM</td></tr><tr><td data-value="019.Screen Modes.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/019.Screen%20Modes.mp4">019.Screen Modes.mp4</a></td><td class="detailsColumn" data-value="6262057">6.0 MB</td><td class="detailsColumn" data-value="1373543548">7/11/13, 5:52:28 PM</td></tr><tr><td data-value="020.Creating Multiple Views of Artwork.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/020.Creating%20Multiple%20Views%20of%20Artwork.mp4">020.Creating Multiple Views of Artwork.mp4</a></td><td class="detailsColumn" data-value="37817353">36.1 MB</td><td class="detailsColumn" data-value="1373543658">7/11/13, 5:54:18 PM</td></tr><tr><td data-value="021.Selecting Objects Using the Basic Selection Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/021.Selecting%20Objects%20Using%20the%20Basic%20Selection%20Tools.mp4">021.Selecting Objects Using the Basic Selection Tools.mp4</a></td><td class="detailsColumn" data-value="11826311">11.3 MB</td><td class="detailsColumn" data-value="1373543698">7/11/13, 5:54:58 PM</td></tr><tr><td data-value="022.Selecting Objects Using Advanced Selection Techniques.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/022.Selecting%20Objects%20Using%20Advanced%20Selection%20Techniques.mp4">022.Selecting Objects Using Advanced Selection Techniques.mp4</a></td><td class="detailsColumn" data-value="26330895">25.1 MB</td><td class="detailsColumn" data-value="1373543744">7/11/13, 5:55:44 PM</td></tr><tr><td data-value="023.Understanding Isolation Mode.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/023.Understanding%20Isolation%20Mode.mp4">023.Understanding Isolation Mode.mp4</a></td><td class="detailsColumn" data-value="13858576">13.2 MB</td><td class="detailsColumn" data-value="1373543784">7/11/13, 5:56:24 PM</td></tr><tr><td data-value="024.Creating Guides.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/024.Creating%20Guides.mp4">024.Creating Guides.mp4</a></td><td class="detailsColumn" data-value="37871303">36.1 MB</td><td class="detailsColumn" data-value="1373543836">7/11/13, 5:57:16 PM</td></tr><tr><td data-value="025.Understanding Stroke and Fill Properties.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/025.Understanding%20Stroke%20and%20Fill%20Properties.mp4">025.Understanding Stroke and Fill Properties.mp4</a></td><td class="detailsColumn" data-value="11606183">11.1 MB</td><td class="detailsColumn" data-value="1373543874">7/11/13, 5:57:54 PM</td></tr><tr><td data-value="026.Drawing with the Shape Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/026.Drawing%20with%20the%20Shape%20Tools.mp4">026.Drawing with the Shape Tools.mp4</a></td><td class="detailsColumn" data-value="19412339">18.5 MB</td><td class="detailsColumn" data-value="1373543888">7/11/13, 5:58:08 PM</td></tr><tr><td data-value="027.Drawing with the Line Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/027.Drawing%20with%20the%20Line%20Tools.mp4">027.Drawing with the Line Tools.mp4</a></td><td class="detailsColumn" data-value="61841796">59.0 MB</td><td class="detailsColumn" data-value="1373544004">7/11/13, 6:00:04 PM</td></tr><tr><td data-value="028.Drawing with the Pencil Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/028.Drawing%20with%20the%20Pencil%20Tool.mp4">028.Drawing with the Pencil Tool.mp4</a></td><td class="detailsColumn" data-value="13683912">13.0 MB</td><td class="detailsColumn" data-value="1373544014">7/11/13, 6:00:14 PM</td></tr><tr><td data-value="029.Basics of Drawing with the Pen Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/029.Basics%20of%20Drawing%20with%20the%20Pen%20Tool.mp4">029.Basics of Drawing with the Pen Tool.mp4</a></td><td class="detailsColumn" data-value="31803140">30.3 MB</td><td class="detailsColumn" data-value="1373544076">7/11/13, 6:01:16 PM</td></tr><tr><td data-value="030.Drawing with the Blob Brush Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/030.Drawing%20with%20the%20Blob%20Brush%20Tool.mp4">030.Drawing with the Blob Brush Tool.mp4</a></td><td class="detailsColumn" data-value="17563709">16.8 MB</td><td class="detailsColumn" data-value="1373544132">7/11/13, 6:02:12 PM</td></tr><tr><td data-value="031.Understanding Stacking Order.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/031.Understanding%20Stacking%20Order.mp4">031.Understanding Stacking Order.mp4</a></td><td class="detailsColumn" data-value="11138182">10.6 MB</td><td class="detailsColumn" data-value="1373544140">7/11/13, 6:02:20 PM</td></tr><tr><td data-value="032.Understanding the Layers Panel.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/032.Understanding%20the%20Layers%20Panel.mp4">032.Understanding the Layers Panel.mp4</a></td><td class="detailsColumn" data-value="14911407">14.2 MB</td><td class="detailsColumn" data-value="1373544150">7/11/13, 6:02:30 PM</td></tr><tr><td data-value="033.Using Drawing Modes.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/033.Using%20Drawing%20Modes.mp4">033.Using Drawing Modes.mp4</a></td><td class="detailsColumn" data-value="17459398">16.7 MB</td><td class="detailsColumn" data-value="1373544200">7/11/13, 6:03:20 PM</td></tr><tr><td data-value="034.Creating Objects in Perspective.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/034.Creating%20Objects%20in%20Perspective.mp4">034.Creating Objects in Perspective.mp4</a></td><td class="detailsColumn" data-value="59483242">56.7 MB</td><td class="detailsColumn" data-value="1373544262">7/11/13, 6:04:22 PM</td></tr><tr><td data-value="035.Using the Path Splitting Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/035.Using%20the%20Path%20Splitting%20Tools.mp4">035.Using the Path Splitting Tools.mp4</a></td><td class="detailsColumn" data-value="12401895">11.8 MB</td><td class="detailsColumn" data-value="1373544272">7/11/13, 6:04:32 PM</td></tr><tr><td data-value="036.Modifying and Joining Paths.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/036.Modifying%20and%20Joining%20Paths.mp4">036.Modifying and Joining Paths.mp4</a></td><td class="detailsColumn" data-value="16316884">15.6 MB</td><td class="detailsColumn" data-value="1373544282">7/11/13, 6:04:42 PM</td></tr><tr><td data-value="037.Using the Pathfinder Panel.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/037.Using%20the%20Pathfinder%20Panel.mp4">037.Using the Pathfinder Panel.mp4</a></td><td class="detailsColumn" data-value="27573470">26.3 MB</td><td class="detailsColumn" data-value="1373544328">7/11/13, 6:05:28 PM</td></tr><tr><td data-value="038.Using the Shapebuilder Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/038.Using%20the%20Shapebuilder%20Tool.mp4">038.Using the Shapebuilder Tool.mp4</a></td><td class="detailsColumn" data-value="26979829">25.7 MB</td><td class="detailsColumn" data-value="1373544374">7/11/13, 6:06:14 PM</td></tr><tr><td data-value="039.Creating a Compound Path.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/039.Creating%20a%20Compound%20Path.mp4">039.Creating a Compound Path.mp4</a></td><td class="detailsColumn" data-value="15553072">14.8 MB</td><td class="detailsColumn" data-value="1373544414">7/11/13, 6:06:54 PM</td></tr><tr><td data-value="040.Creating a Clipping Mask.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/040.Creating%20a%20Clipping%20Mask.mp4">040.Creating a Clipping Mask.mp4</a></td><td class="detailsColumn" data-value="18795162">17.9 MB</td><td class="detailsColumn" data-value="1373544456">7/11/13, 6:07:36 PM</td></tr><tr><td data-value="041.Creating an Opacity Mask.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/041.Creating%20an%20Opacity%20Mask.mp4">041.Creating an Opacity Mask.mp4</a></td><td class="detailsColumn" data-value="23498340">22.4 MB</td><td class="detailsColumn" data-value="1373544500">7/11/13, 6:08:20 PM</td></tr><tr><td data-value="042.Fun with the Blend Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/042.Fun%20with%20the%20Blend%20Tool.mp4">042.Fun with the Blend Tool.mp4</a></td><td class="detailsColumn" data-value="26195189">25.0 MB</td><td class="detailsColumn" data-value="1373544544">7/11/13, 6:09:04 PM</td></tr><tr><td data-value="043.Using Offset Path.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/043.Using%20Offset%20Path.mp4">043.Using Offset Path.mp4</a></td><td class="detailsColumn" data-value="7828499">7.5 MB</td><td class="detailsColumn" data-value="1373544550">7/11/13, 6:09:10 PM</td></tr><tr><td data-value="044.Transforming Objects.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/044.Transforming%20Objects.mp4">044.Transforming Objects.mp4</a></td><td class="detailsColumn" data-value="18515246">17.7 MB</td><td class="detailsColumn" data-value="1373544592">7/11/13, 6:09:52 PM</td></tr><tr><td data-value="045.Using the Reshaping Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/045.Using%20the%20Reshaping%20Tools.mp4">045.Using the Reshaping Tools.mp4</a></td><td class="detailsColumn" data-value="21807598">20.8 MB</td><td class="detailsColumn" data-value="1373544606">7/11/13, 6:10:06 PM</td></tr><tr><td data-value="046.The Width Tool.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/046.The%20Width%20Tool.mp4">046.The Width Tool.mp4</a></td><td class="detailsColumn" data-value="10164360">9.7 MB</td><td class="detailsColumn" data-value="1373544614">7/11/13, 6:10:14 PM</td></tr><tr><td data-value="047.Aligning Objects.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/047.Aligning%20Objects.mp4">047.Aligning Objects.mp4</a></td><td class="detailsColumn" data-value="28189835">26.9 MB</td><td class="detailsColumn" data-value="1373544660">7/11/13, 6:11:00 PM</td></tr><tr><td data-value="048.The Color Panel and Color Picker.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/048.The%20Color%20Panel%20and%20Color%20Picker.mp4">048.The Color Panel and Color Picker.mp4</a></td><td class="detailsColumn" data-value="13855058">13.2 MB</td><td class="detailsColumn" data-value="1373544700">7/11/13, 6:11:40 PM</td></tr><tr><td data-value="049.The Swatches Panel.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/049.The%20Swatches%20Panel.mp4">049.The Swatches Panel.mp4</a></td><td class="detailsColumn" data-value="22348763">21.3 MB</td><td class="detailsColumn" data-value="1373544742">7/11/13, 6:12:22 PM</td></tr><tr><td data-value="050.Creating Spot Colors.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/050.Creating%20Spot%20Colors.mp4">050.Creating Spot Colors.mp4</a></td><td class="detailsColumn" data-value="18496121">17.6 MB</td><td class="detailsColumn" data-value="1373544784">7/11/13, 6:13:04 PM</td></tr><tr><td data-value="051.Creating a Gradient Swatch.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/051.Creating%20a%20Gradient%20Swatch.mp4">051.Creating a Gradient Swatch.mp4</a></td><td class="detailsColumn" data-value="24060012">22.9 MB</td><td class="detailsColumn" data-value="1373544830">7/11/13, 6:13:50 PM</td></tr><tr><td data-value="052.Creating a Pattern Swatch.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/052.Creating%20a%20Pattern%20Swatch.mp4">052.Creating a Pattern Swatch.mp4</a></td><td class="detailsColumn" data-value="37827532">36.1 MB</td><td class="detailsColumn" data-value="1373544854">7/11/13, 6:14:14 PM</td></tr><tr><td data-value="053.Recoloring Artwork.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/053.Recoloring%20Artwork.mp4">053.Recoloring Artwork.mp4</a></td><td class="detailsColumn" data-value="21549903">20.6 MB</td><td class="detailsColumn" data-value="1373544896">7/11/13, 6:14:56 PM</td></tr><tr><td data-value="054.Live Paint.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/054.Live%20Paint.mp4">054.Live Paint.mp4</a></td><td class="detailsColumn" data-value="10293136">9.8 MB</td><td class="detailsColumn" data-value="1373544928">7/11/13, 6:15:28 PM</td></tr><tr><td data-value="055.Type Basics.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/055.Type%20Basics.mp4">055.Type Basics.mp4</a></td><td class="detailsColumn" data-value="42535709">40.6 MB</td><td class="detailsColumn" data-value="1373544980">7/11/13, 6:16:20 PM</td></tr><tr><td data-value="056.Getting to Know the Type Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/056.Getting%20to%20Know%20the%20Type%20Tools.mp4">056.Getting to Know the Type Tools.mp4</a></td><td class="detailsColumn" data-value="28902686">27.6 MB</td><td class="detailsColumn" data-value="1373545026">7/11/13, 6:17:06 PM</td></tr><tr><td data-value="057.Formatting Type.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/057.Formatting%20Type.mp4">057.Formatting Type.mp4</a></td><td class="detailsColumn" data-value="33973709">32.4 MB</td><td class="detailsColumn" data-value="1373545074">7/11/13, 6:17:54 PM</td></tr><tr><td data-value="058.Threading Type.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/058.Threading%20Type.mp4">058.Threading Type.mp4</a></td><td class="detailsColumn" data-value="11300620">10.8 MB</td><td class="detailsColumn" data-value="1373545084">7/11/13, 6:18:04 PM</td></tr><tr><td data-value="059.Applying Text Wrap.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/059.Applying%20Text%20Wrap.mp4">059.Applying Text Wrap.mp4</a></td><td class="detailsColumn" data-value="7227633">6.9 MB</td><td class="detailsColumn" data-value="1373545090">7/11/13, 6:18:10 PM</td></tr><tr><td data-value="060.Using Character and Paragraph Styles.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/060.Using%20Character%20and%20Paragraph%20Styles.mp4">060.Using Character and Paragraph Styles.mp4</a></td><td class="detailsColumn" data-value="26794915">25.6 MB</td><td class="detailsColumn" data-value="1373545136">7/11/13, 6:18:56 PM</td></tr><tr><td data-value="061.Converting Text to Outlines.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/061.Converting%20Text%20to%20Outlines.mp4">061.Converting Text to Outlines.mp4</a></td><td class="detailsColumn" data-value="16679831">15.9 MB</td><td class="detailsColumn" data-value="1373545176">7/11/13, 6:19:36 PM</td></tr><tr><td data-value="062.Warping Text.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/062.Warping%20Text.mp4">062.Warping Text.mp4</a></td><td class="detailsColumn" data-value="15024747">14.3 MB</td><td class="detailsColumn" data-value="1373545186">7/11/13, 6:19:46 PM</td></tr><tr><td data-value="063.Understanding How Symbols Work.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/063.Understanding%20How%20Symbols%20Work.mp4">063.Understanding How Symbols Work.mp4</a></td><td class="detailsColumn" data-value="30044088">28.7 MB</td><td class="detailsColumn" data-value="1373545288">7/11/13, 6:21:28 PM</td></tr><tr><td data-value="064.Creating a New Symbol.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/064.Creating%20a%20New%20Symbol.mp4">064.Creating a New Symbol.mp4</a></td><td class="detailsColumn" data-value="56338484">53.7 MB</td><td class="detailsColumn" data-value="1373545346">7/11/13, 6:22:26 PM</td></tr><tr><td data-value="065.The Symbolism Tools.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/065.The%20Symbolism%20Tools.mp4">065.The Symbolism Tools.mp4</a></td><td class="detailsColumn" data-value="65785573">62.7 MB</td><td class="detailsColumn" data-value="1373545438">7/11/13, 6:23:58 PM</td></tr><tr><td data-value="066.Drawing with and Applying Brushes.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/066.Drawing%20with%20and%20Applying%20Brushes.mp4">066.Drawing with and Applying Brushes.mp4</a></td><td class="detailsColumn" data-value="22824444">21.8 MB</td><td class="detailsColumn" data-value="1373545482">7/11/13, 6:24:42 PM</td></tr><tr><td data-value="067.Creating a Calligraphic Brush.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/067.Creating%20a%20Calligraphic%20Brush.mp4">067.Creating a Calligraphic Brush.mp4</a></td><td class="detailsColumn" data-value="11214230">10.7 MB</td><td class="detailsColumn" data-value="1373545490">7/11/13, 6:24:50 PM</td></tr><tr><td data-value="068.Creating a Scatter Brush.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/068.Creating%20a%20Scatter%20Brush.mp4">068.Creating a Scatter Brush.mp4</a></td><td class="detailsColumn" data-value="22878495">21.8 MB</td><td class="detailsColumn" data-value="1373545506">7/11/13, 6:25:06 PM</td></tr><tr><td data-value="069.Creating an Art Brush.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/069.Creating%20an%20Art%20Brush.mp4">069.Creating an Art Brush.mp4</a></td><td class="detailsColumn" data-value="16768300">16.0 MB</td><td class="detailsColumn" data-value="1373545548">7/11/13, 6:25:48 PM</td></tr><tr><td data-value="070.Creating a Pattern Brush.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/070.Creating%20a%20Pattern%20Brush.mp4">070.Creating a Pattern Brush.mp4</a></td><td class="detailsColumn" data-value="28176561">26.9 MB</td><td class="detailsColumn" data-value="1373545596">7/11/13, 6:26:36 PM</td></tr><tr><td data-value="071.Drawing with the Bristle Brush.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/071.Drawing%20with%20the%20Bristle%20Brush.mp4">071.Drawing with the Bristle Brush.mp4</a></td><td class="detailsColumn" data-value="10236355">9.8 MB</td><td class="detailsColumn" data-value="1373545604">7/11/13, 6:26:44 PM</td></tr><tr><td data-value="072.Effects and the Appearance Panel.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/072.Effects%20and%20the%20Appearance%20Panel.mp4">072.Effects and the Appearance Panel.mp4</a></td><td class="detailsColumn" data-value="17523461">16.7 MB</td><td class="detailsColumn" data-value="1373545616">7/11/13, 6:26:56 PM</td></tr><tr><td data-value="073.Creating 3D Effects.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/073.Creating%203D%20Effects.mp4">073.Creating 3D Effects.mp4</a></td><td class="detailsColumn" data-value="24984264">23.8 MB</td><td class="detailsColumn" data-value="1373545632">7/11/13, 6:27:12 PM</td></tr><tr><td data-value="074.Creating Graphic Styles.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/074.Creating%20Graphic%20Styles.mp4">074.Creating Graphic Styles.mp4</a></td><td class="detailsColumn" data-value="25990386">24.8 MB</td><td class="detailsColumn" data-value="1373545676">7/11/13, 6:27:56 PM</td></tr><tr><td data-value="075.Creating a Graph.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/075.Creating%20a%20Graph.mp4">075.Creating a Graph.mp4</a></td><td class="detailsColumn" data-value="17936664">17.1 MB</td><td class="detailsColumn" data-value="1373545688">7/11/13, 6:28:08 PM</td></tr><tr><td data-value="076.Editing a Graph.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/076.Editing%20a%20Graph.mp4">076.Editing a Graph.mp4</a></td><td class="detailsColumn" data-value="11300694">10.8 MB</td><td class="detailsColumn" data-value="1373545696">7/11/13, 6:28:16 PM</td></tr><tr><td data-value="077.Creating a 3D Graph.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/077.Creating%20a%203D%20Graph.mp4">077.Creating a 3D Graph.mp4</a></td><td class="detailsColumn" data-value="5800557">5.5 MB</td><td class="detailsColumn" data-value="1373545702">7/11/13, 6:28:22 PM</td></tr><tr><td data-value="078.Creating a Graph Design.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/078.Creating%20a%20Graph%20Design.mp4">078.Creating a Graph Design.mp4</a></td><td class="detailsColumn" data-value="11698686">11.2 MB</td><td class="detailsColumn" data-value="1373545710">7/11/13, 6:28:30 PM</td></tr><tr><td data-value="079.Placing Images.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/079.Placing%20Images.mp4">079.Placing Images.mp4</a></td><td class="detailsColumn" data-value="24908235">23.8 MB</td><td class="detailsColumn" data-value="1373545756">7/11/13, 6:29:16 PM</td></tr><tr><td data-value="080.Working with Embedded Images.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/080.Working%20with%20Embedded%20Images.mp4">080.Working with Embedded Images.mp4</a></td><td class="detailsColumn" data-value="13577353">12.9 MB</td><td class="detailsColumn" data-value="1373545802">7/11/13, 6:30:02 PM</td></tr><tr><td data-value="081.Packaging Files.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/081.Packaging%20Files.mp4">081.Packaging Files.mp4</a></td><td class="detailsColumn" data-value="15992116">15.3 MB</td><td class="detailsColumn" data-value="1373545860">7/11/13, 6:31:00 PM</td></tr><tr><td data-value="082.Image Trace.mp4"><a class="icon file" draggable="true" href="file:///D:/Adobe_Illustrator_CC_Learn_by_Video/082.Image%20Trace.mp4">082.Image Trace.mp4</a></td><td class="detailsColumn" data-value="32568817">31.1 MB</td><td class="detailsColumn" data-value="1373545954">7/11/13, 6:32:34 PM</td></tr></tbody>
+</table>
+
+
+
+
+<script>// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+/**
+ * @fileoverview This file defines a singleton which provides access to all data
+ * that is available as soon as the page's resources are loaded (before DOM
+ * content has finished loading). This data includes both localized strings and
+ * any data that is important to have ready from a very early stage (e.g. things
+ * that must be displayed right away).
+ *
+ * Note that loadTimeData is not guaranteed to be consistent between page
+ * refreshes (https://crbug.com/740629) and should not contain values that might
+ * change if the page is re-opened later.
+ */
+
+// #import {assert} from './assert.m.js';
+// #import {parseHtmlSubset} from './parse_html_subset.m.js';
+
+/**
+ * @typedef {{
+ *   substitutions: (Array<string>|undefined),
+ *   attrs: (Object<function(Node, string):boolean>|undefined),
+ *   tags: (Array<string>|undefined),
+ * }}
+ */
+/* #export */ let SanitizeInnerHtmlOpts;
+
+// eslint-disable-next-line no-var
+/* #export */ /** @type {!LoadTimeData} */ var loadTimeData;
+
+// Expose this type globally as a temporary work around until
+// https://github.com/google/closure-compiler/issues/544 is fixed.
+/** @constructor */
+function LoadTimeData(){}
+
+(function() {
+  'use strict';
+
+  LoadTimeData.prototype = {
+    /**
+     * Sets the backing object.
+     *
+     * Note that there is no getter for |data_| to discourage abuse of the form:
+     *
+     *     var value = loadTimeData.data()['key'];
+     *
+     * @param {Object} value The de-serialized page data.
+     */
+    set data(value) {
+      expect(!this.data_, 'Re-setting data.');
+      this.data_ = value;
+    },
+
+    /**
+     * Returns a JsEvalContext for |data_|.
+     * @returns {JsEvalContext}
+     */
+    createJsEvalContext: function() {
+      return new JsEvalContext(this.data_);
+    },
+
+    /**
+     * @param {string} id An ID of a value that might exist.
+     * @return {boolean} True if |id| is a key in the dictionary.
+     */
+    valueExists: function(id) {
+      return id in this.data_;
+    },
+
+    /**
+     * Fetches a value, expecting that it exists.
+     * @param {string} id The key that identifies the desired value.
+     * @return {*} The corresponding value.
+     */
+    getValue: function(id) {
+      expect(this.data_, 'No data. Did you remember to include strings.js?');
+      const value = this.data_[id];
+      expect(typeof value != 'undefined', 'Could not find value for ' + id);
+      return value;
+    },
+
+    /**
+     * As above, but also makes sure that the value is a string.
+     * @param {string} id The key that identifies the desired string.
+     * @return {string} The corresponding string value.
+     */
+    getString: function(id) {
+      const value = this.getValue(id);
+      expectIsType(id, value, 'string');
+      return /** @type {string} */ (value);
+    },
+
+    /**
+     * Returns a formatted localized string where $1 to $9 are replaced by the
+     * second to the tenth argument.
+     * @param {string} id The ID of the string we want.
+     * @param {...(string|number)} var_args The extra values to include in the
+     *     formatted output.
+     * @return {string} The formatted string.
+     */
+    getStringF: function(id, var_args) {
+      const value = this.getString(id);
+      if (!value) {
+        return '';
+      }
+
+      const args = Array.prototype.slice.call(arguments);
+      args[0] = value;
+      return this.substituteString.apply(this, args);
+    },
+
+    /**
+     * Make a string safe for use with with Polymer bindings that are
+     * inner-h-t-m-l (or other innerHTML use).
+     * @param {string} rawString The unsanitized string.
+     * @param {SanitizeInnerHtmlOpts=} opts Optional additional allowed tags and
+     *     attributes.
+     * @return {string}
+     */
+    sanitizeInnerHtml: function(rawString, opts) {
+      opts = opts || {};
+      return parseHtmlSubset('<b>' + rawString + '</b>', opts.tags, opts.attrs)
+          .firstChild.innerHTML;
+    },
+
+    /**
+     * Returns a formatted localized string where $1 to $9 are replaced by the
+     * second to the tenth argument. Any standalone $ signs must be escaped as
+     * $$.
+     * @param {string} label The label to substitute through.
+     *     This is not an resource ID.
+     * @param {...(string|number)} var_args The extra values to include in the
+     *     formatted output.
+     * @return {string} The formatted string.
+     */
+    substituteString: function(label, var_args) {
+      const varArgs = arguments;
+      return label.replace(/\$(.|$|\n)/g, function(m) {
+        assert(m.match(/\$[$1-9]/), 'Unescaped $ found in localized string.');
+        return m == '$$' ? '$' : varArgs[m[1]];
+      });
+    },
+
+    /**
+     * Returns a formatted string where $1 to $9 are replaced by the second to
+     * tenth argument, split apart into a list of pieces describing how the
+     * substitution was performed. Any standalone $ signs must be escaped as $$.
+     * @param {string} label A localized string to substitute through.
+     *     This is not an resource ID.
+     * @param {...(string|number)} var_args The extra values to include in the
+     *     formatted output.
+     * @return {!Array<!{value: string, arg: (null|string)}>} The formatted
+     *     string pieces.
+     */
+    getSubstitutedStringPieces: function(label, var_args) {
+      const varArgs = arguments;
+      // Split the string by separately matching all occurrences of $1-9 and of
+      // non $1-9 pieces.
+      const pieces = (label.match(/(\$[1-9])|(([^$]|\$([^1-9]|$))+)/g) ||
+                      []).map(function(p) {
+        // Pieces that are not $1-9 should be returned after replacing $$
+        // with $.
+        if (!p.match(/^\$[1-9]$/)) {
+          assert(
+              (p.match(/\$/g) || []).length % 2 == 0,
+              'Unescaped $ found in localized string.');
+          return {value: p.replace(/\$\$/g, '$'), arg: null};
+        }
+
+        // Otherwise, return the substitution value.
+        return {value: varArgs[p[1]], arg: p};
+      });
+
+      return pieces;
+    },
+
+    /**
+     * As above, but also makes sure that the value is a boolean.
+     * @param {string} id The key that identifies the desired boolean.
+     * @return {boolean} The corresponding boolean value.
+     */
+    getBoolean: function(id) {
+      const value = this.getValue(id);
+      expectIsType(id, value, 'boolean');
+      return /** @type {boolean} */ (value);
+    },
+
+    /**
+     * As above, but also makes sure that the value is an integer.
+     * @param {string} id The key that identifies the desired number.
+     * @return {number} The corresponding number value.
+     */
+    getInteger: function(id) {
+      const value = this.getValue(id);
+      expectIsType(id, value, 'number');
+      expect(value == Math.floor(value), 'Number isn\'t integer: ' + value);
+      return /** @type {number} */ (value);
+    },
+
+    /**
+     * Override values in loadTimeData with the values found in |replacements|.
+     * @param {Object} replacements The dictionary object of keys to replace.
+     */
+    overrideValues: function(replacements) {
+      expect(
+          typeof replacements == 'object',
+          'Replacements must be a dictionary object.');
+      for (const key in replacements) {
+        this.data_[key] = replacements[key];
+      }
+    }
+  };
+
+  /**
+   * Checks condition, displays error message if expectation fails.
+   * @param {*} condition The condition to check for truthiness.
+   * @param {string} message The message to display if the check fails.
+   */
+  function expect(condition, message) {
+    if (!condition) {
+      console.error(
+          'Unexpected condition on ' + document.location.href + ': ' + message);
+    }
+  }
+
+  /**
+   * Checks that the given value has the given type.
+   * @param {string} id The id of the value (only used for error message).
+   * @param {*} value The value to check the type on.
+   * @param {string} type The type we expect |value| to be.
+   */
+  function expectIsType(id, value, type) {
+    expect(
+        typeof value == type, '[' + value + '] (' + id + ') is not a ' + type);
+  }
+
+  expect(!loadTimeData, 'should only include this file once');
+  loadTimeData = new LoadTimeData;
+
+  // Expose |loadTimeData| directly on |window|. This is only necessary by the
+  // auto-generated load_time_data.m.js, since within a JS module the scope is
+  // local.
+  window.loadTimeData = loadTimeData;
+})();
+</script><script>loadTimeData.data = {"header":"Index of LOCATION","headerDateModified":"Date Modified","headerName":"Name","headerSize":"Size","language":"en","listingParsingErrorBoxText":"Oh, no! This server is sending data Google Chrome can't understand. Please \u003Ca href=\"http://code.google.com/p/chromium/issues/entry\">report a bug\u003C/a>, and include the \u003Ca href=\"LOCATION\">raw listing\u003C/a>.","parentDirText":"[parent directory]","textdirection":"ltr"};</script><script>start("D:\\Adobe_Illustrator_CC_Learn_by_Video\\");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("project_files","project_files",1,0,"0 B",1381257739,"10/9/13, 12:42:19 AM");</script>
+<script>addRow("001.Welcome Movie.mp4","001.Welcome%20Movie.mp4",0,28485741,"27.2 MB",1373548188,"7/11/13, 7:09:48 PM");</script>
+<script>addRow("002.What Is Illustrator-.mp4","002.What%20Is%20Illustrator-.mp4",0,1414531,"1.3 MB",1373542882,"7/11/13, 5:41:22 PM");</script>
+<script>addRow("003.Raster vs. Vector.mp4","003.Raster%20vs.%20Vector.mp4",0,3022853,"2.9 MB",1373542886,"7/11/13, 5:41:26 PM");</script>
+<script>addRow("004.Working with the Exercise Files (Graphics and Fonts).mp4","004.Working%20with%20the%20Exercise%20Files%20(Graphics%20and%20Fonts).mp4",0,7353363,"7.0 MB",1373542892,"7/11/13, 5:41:32 PM");</script>
+<script>addRow("005.Illustrator Panels.mp4","005.Illustrator%20Panels.mp4",0,7041513,"6.7 MB",1373542946,"7/11/13, 5:42:26 PM");</script>
+<script>addRow("006.The Application Frame and Application Bar.mp4","006.The%20Application%20Frame%20and%20Application%20Bar.mp4",0,15673510,"14.9 MB",1373542986,"7/11/13, 5:43:06 PM");</script>
+<script>addRow("007.Utilizing Workspaces.mp4","007.Utilizing%20Workspaces.mp4",0,9986223,"9.5 MB",1373542994,"7/11/13, 5:43:14 PM");</script>
+<script>addRow("008.Working with Artboards.mp4","008.Working%20with%20Artboards.mp4",0,13847227,"13.2 MB",1373543034,"7/11/13, 5:43:54 PM");</script>
+<script>addRow("009.Making the Most of Artboards.mp4","009.Making%20the%20Most%20of%20Artboards.mp4",0,19964328,"19.0 MB",1373543046,"7/11/13, 5:44:06 PM");</script>
+<script>addRow("010.Sync Settings.mp4","010.Sync%20Settings.mp4",0,6519218,"6.2 MB",1373543072,"7/11/13, 5:44:32 PM");</script>
+<script>addRow("011.Creating a New Illustrator Document.mp4","011.Creating%20a%20New%20Illustrator%20Document.mp4",0,6776904,"6.5 MB",1373543088,"7/11/13, 5:44:48 PM");</script>
+<script>addRow("012.Creating a New Document Profile.mp4","012.Creating%20a%20New%20Document%20Profile.mp4",0,10428909,"9.9 MB",1373543096,"7/11/13, 5:44:56 PM");</script>
+<script>addRow("013.Creating an Illustrator Template.mp4","013.Creating%20an%20Illustrator%20Template.mp4",0,14898211,"14.2 MB",1373543162,"7/11/13, 5:46:02 PM");</script>
+<script>addRow("014.Saving an Illustrator File.mp4","014.Saving%20an%20Illustrator%20File.mp4",0,14182364,"13.5 MB",1373543200,"7/11/13, 5:46:40 PM");</script>
+<script>addRow("015.Saving for the Web.mp4","015.Saving%20for%20the%20Web.mp4",0,20845358,"19.9 MB",1373543270,"7/11/13, 5:47:50 PM");</script>
+<script>addRow("016.Using Adobe Bridge.mp4","016.Using%20Adobe%20Bridge.mp4",0,16685027,"15.9 MB",1373543326,"7/11/13, 5:48:46 PM");</script>
+<script>addRow("017.Document Navigation Techniques.mp4","017.Document%20Navigation%20Techniques.mp4",0,62049363,"59.2 MB",1373543470,"7/11/13, 5:51:10 PM");</script>
+<script>addRow("018.Illustrator Viewing Modes.mp4","018.Illustrator%20Viewing%20Modes.mp4",0,13996862,"13.3 MB",1373543512,"7/11/13, 5:51:52 PM");</script>
+<script>addRow("019.Screen Modes.mp4","019.Screen%20Modes.mp4",0,6262057,"6.0 MB",1373543548,"7/11/13, 5:52:28 PM");</script>
+<script>addRow("020.Creating Multiple Views of Artwork.mp4","020.Creating%20Multiple%20Views%20of%20Artwork.mp4",0,37817353,"36.1 MB",1373543658,"7/11/13, 5:54:18 PM");</script>
+<script>addRow("021.Selecting Objects Using the Basic Selection Tools.mp4","021.Selecting%20Objects%20Using%20the%20Basic%20Selection%20Tools.mp4",0,11826311,"11.3 MB",1373543698,"7/11/13, 5:54:58 PM");</script>
+<script>addRow("022.Selecting Objects Using Advanced Selection Techniques.mp4","022.Selecting%20Objects%20Using%20Advanced%20Selection%20Techniques.mp4",0,26330895,"25.1 MB",1373543744,"7/11/13, 5:55:44 PM");</script>
+<script>addRow("023.Understanding Isolation Mode.mp4","023.Understanding%20Isolation%20Mode.mp4",0,13858576,"13.2 MB",1373543784,"7/11/13, 5:56:24 PM");</script>
+<script>addRow("024.Creating Guides.mp4","024.Creating%20Guides.mp4",0,37871303,"36.1 MB",1373543836,"7/11/13, 5:57:16 PM");</script>
+<script>addRow("025.Understanding Stroke and Fill Properties.mp4","025.Understanding%20Stroke%20and%20Fill%20Properties.mp4",0,11606183,"11.1 MB",1373543874,"7/11/13, 5:57:54 PM");</script>
+<script>addRow("026.Drawing with the Shape Tools.mp4","026.Drawing%20with%20the%20Shape%20Tools.mp4",0,19412339,"18.5 MB",1373543888,"7/11/13, 5:58:08 PM");</script>
+<script>addRow("027.Drawing with the Line Tools.mp4","027.Drawing%20with%20the%20Line%20Tools.mp4",0,61841796,"59.0 MB",1373544004,"7/11/13, 6:00:04 PM");</script>
+<script>addRow("028.Drawing with the Pencil Tool.mp4","028.Drawing%20with%20the%20Pencil%20Tool.mp4",0,13683912,"13.0 MB",1373544014,"7/11/13, 6:00:14 PM");</script>
+<script>addRow("029.Basics of Drawing with the Pen Tool.mp4","029.Basics%20of%20Drawing%20with%20the%20Pen%20Tool.mp4",0,31803140,"30.3 MB",1373544076,"7/11/13, 6:01:16 PM");</script>
+<script>addRow("030.Drawing with the Blob Brush Tool.mp4","030.Drawing%20with%20the%20Blob%20Brush%20Tool.mp4",0,17563709,"16.8 MB",1373544132,"7/11/13, 6:02:12 PM");</script>
+<script>addRow("031.Understanding Stacking Order.mp4","031.Understanding%20Stacking%20Order.mp4",0,11138182,"10.6 MB",1373544140,"7/11/13, 6:02:20 PM");</script>
+<script>addRow("032.Understanding the Layers Panel.mp4","032.Understanding%20the%20Layers%20Panel.mp4",0,14911407,"14.2 MB",1373544150,"7/11/13, 6:02:30 PM");</script>
+<script>addRow("033.Using Drawing Modes.mp4","033.Using%20Drawing%20Modes.mp4",0,17459398,"16.7 MB",1373544200,"7/11/13, 6:03:20 PM");</script>
+<script>addRow("034.Creating Objects in Perspective.mp4","034.Creating%20Objects%20in%20Perspective.mp4",0,59483242,"56.7 MB",1373544262,"7/11/13, 6:04:22 PM");</script>
+<script>addRow("035.Using the Path Splitting Tools.mp4","035.Using%20the%20Path%20Splitting%20Tools.mp4",0,12401895,"11.8 MB",1373544272,"7/11/13, 6:04:32 PM");</script>
+<script>addRow("036.Modifying and Joining Paths.mp4","036.Modifying%20and%20Joining%20Paths.mp4",0,16316884,"15.6 MB",1373544282,"7/11/13, 6:04:42 PM");</script>
+<script>addRow("037.Using the Pathfinder Panel.mp4","037.Using%20the%20Pathfinder%20Panel.mp4",0,27573470,"26.3 MB",1373544328,"7/11/13, 6:05:28 PM");</script>
+<script>addRow("038.Using the Shapebuilder Tool.mp4","038.Using%20the%20Shapebuilder%20Tool.mp4",0,26979829,"25.7 MB",1373544374,"7/11/13, 6:06:14 PM");</script>
+<script>addRow("039.Creating a Compound Path.mp4","039.Creating%20a%20Compound%20Path.mp4",0,15553072,"14.8 MB",1373544414,"7/11/13, 6:06:54 PM");</script>
+<script>addRow("040.Creating a Clipping Mask.mp4","040.Creating%20a%20Clipping%20Mask.mp4",0,18795162,"17.9 MB",1373544456,"7/11/13, 6:07:36 PM");</script>
+<script>addRow("041.Creating an Opacity Mask.mp4","041.Creating%20an%20Opacity%20Mask.mp4",0,23498340,"22.4 MB",1373544500,"7/11/13, 6:08:20 PM");</script>
+<script>addRow("042.Fun with the Blend Tool.mp4","042.Fun%20with%20the%20Blend%20Tool.mp4",0,26195189,"25.0 MB",1373544544,"7/11/13, 6:09:04 PM");</script>
+<script>addRow("043.Using Offset Path.mp4","043.Using%20Offset%20Path.mp4",0,7828499,"7.5 MB",1373544550,"7/11/13, 6:09:10 PM");</script>
+<script>addRow("044.Transforming Objects.mp4","044.Transforming%20Objects.mp4",0,18515246,"17.7 MB",1373544592,"7/11/13, 6:09:52 PM");</script>
+<script>addRow("045.Using the Reshaping Tools.mp4","045.Using%20the%20Reshaping%20Tools.mp4",0,21807598,"20.8 MB",1373544606,"7/11/13, 6:10:06 PM");</script>
+<script>addRow("046.The Width Tool.mp4","046.The%20Width%20Tool.mp4",0,10164360,"9.7 MB",1373544614,"7/11/13, 6:10:14 PM");</script>
+<script>addRow("047.Aligning Objects.mp4","047.Aligning%20Objects.mp4",0,28189835,"26.9 MB",1373544660,"7/11/13, 6:11:00 PM");</script>
+<script>addRow("048.The Color Panel and Color Picker.mp4","048.The%20Color%20Panel%20and%20Color%20Picker.mp4",0,13855058,"13.2 MB",1373544700,"7/11/13, 6:11:40 PM");</script>
+<script>addRow("049.The Swatches Panel.mp4","049.The%20Swatches%20Panel.mp4",0,22348763,"21.3 MB",1373544742,"7/11/13, 6:12:22 PM");</script>
+<script>addRow("050.Creating Spot Colors.mp4","050.Creating%20Spot%20Colors.mp4",0,18496121,"17.6 MB",1373544784,"7/11/13, 6:13:04 PM");</script>
+<script>addRow("051.Creating a Gradient Swatch.mp4","051.Creating%20a%20Gradient%20Swatch.mp4",0,24060012,"22.9 MB",1373544830,"7/11/13, 6:13:50 PM");</script>
+<script>addRow("052.Creating a Pattern Swatch.mp4","052.Creating%20a%20Pattern%20Swatch.mp4",0,37827532,"36.1 MB",1373544854,"7/11/13, 6:14:14 PM");</script>
+<script>addRow("053.Recoloring Artwork.mp4","053.Recoloring%20Artwork.mp4",0,21549903,"20.6 MB",1373544896,"7/11/13, 6:14:56 PM");</script>
+<script>addRow("054.Live Paint.mp4","054.Live%20Paint.mp4",0,10293136,"9.8 MB",1373544928,"7/11/13, 6:15:28 PM");</script>
+<script>addRow("055.Type Basics.mp4","055.Type%20Basics.mp4",0,42535709,"40.6 MB",1373544980,"7/11/13, 6:16:20 PM");</script>
+<script>addRow("056.Getting to Know the Type Tools.mp4","056.Getting%20to%20Know%20the%20Type%20Tools.mp4",0,28902686,"27.6 MB",1373545026,"7/11/13, 6:17:06 PM");</script>
+<script>addRow("057.Formatting Type.mp4","057.Formatting%20Type.mp4",0,33973709,"32.4 MB",1373545074,"7/11/13, 6:17:54 PM");</script>
+<script>addRow("058.Threading Type.mp4","058.Threading%20Type.mp4",0,11300620,"10.8 MB",1373545084,"7/11/13, 6:18:04 PM");</script>
+<script>addRow("059.Applying Text Wrap.mp4","059.Applying%20Text%20Wrap.mp4",0,7227633,"6.9 MB",1373545090,"7/11/13, 6:18:10 PM");</script>
+<script>addRow("060.Using Character and Paragraph Styles.mp4","060.Using%20Character%20and%20Paragraph%20Styles.mp4",0,26794915,"25.6 MB",1373545136,"7/11/13, 6:18:56 PM");</script>
+<script>addRow("061.Converting Text to Outlines.mp4","061.Converting%20Text%20to%20Outlines.mp4",0,16679831,"15.9 MB",1373545176,"7/11/13, 6:19:36 PM");</script>
+<script>addRow("062.Warping Text.mp4","062.Warping%20Text.mp4",0,15024747,"14.3 MB",1373545186,"7/11/13, 6:19:46 PM");</script>
+<script>addRow("063.Understanding How Symbols Work.mp4","063.Understanding%20How%20Symbols%20Work.mp4",0,30044088,"28.7 MB",1373545288,"7/11/13, 6:21:28 PM");</script>
+<script>addRow("064.Creating a New Symbol.mp4","064.Creating%20a%20New%20Symbol.mp4",0,56338484,"53.7 MB",1373545346,"7/11/13, 6:22:26 PM");</script>
+<script>addRow("065.The Symbolism Tools.mp4","065.The%20Symbolism%20Tools.mp4",0,65785573,"62.7 MB",1373545438,"7/11/13, 6:23:58 PM");</script>
+<script>addRow("066.Drawing with and Applying Brushes.mp4","066.Drawing%20with%20and%20Applying%20Brushes.mp4",0,22824444,"21.8 MB",1373545482,"7/11/13, 6:24:42 PM");</script>
+<script>addRow("067.Creating a Calligraphic Brush.mp4","067.Creating%20a%20Calligraphic%20Brush.mp4",0,11214230,"10.7 MB",1373545490,"7/11/13, 6:24:50 PM");</script>
+<script>addRow("068.Creating a Scatter Brush.mp4","068.Creating%20a%20Scatter%20Brush.mp4",0,22878495,"21.8 MB",1373545506,"7/11/13, 6:25:06 PM");</script>
+<script>addRow("069.Creating an Art Brush.mp4","069.Creating%20an%20Art%20Brush.mp4",0,16768300,"16.0 MB",1373545548,"7/11/13, 6:25:48 PM");</script>
+<script>addRow("070.Creating a Pattern Brush.mp4","070.Creating%20a%20Pattern%20Brush.mp4",0,28176561,"26.9 MB",1373545596,"7/11/13, 6:26:36 PM");</script>
+<script>addRow("071.Drawing with the Bristle Brush.mp4","071.Drawing%20with%20the%20Bristle%20Brush.mp4",0,10236355,"9.8 MB",1373545604,"7/11/13, 6:26:44 PM");</script>
+<script>addRow("072.Effects and the Appearance Panel.mp4","072.Effects%20and%20the%20Appearance%20Panel.mp4",0,17523461,"16.7 MB",1373545616,"7/11/13, 6:26:56 PM");</script>
+<script>addRow("073.Creating 3D Effects.mp4","073.Creating%203D%20Effects.mp4",0,24984264,"23.8 MB",1373545632,"7/11/13, 6:27:12 PM");</script>
+<script>addRow("074.Creating Graphic Styles.mp4","074.Creating%20Graphic%20Styles.mp4",0,25990386,"24.8 MB",1373545676,"7/11/13, 6:27:56 PM");</script>
+<script>addRow("075.Creating a Graph.mp4","075.Creating%20a%20Graph.mp4",0,17936664,"17.1 MB",1373545688,"7/11/13, 6:28:08 PM");</script>
+<script>addRow("076.Editing a Graph.mp4","076.Editing%20a%20Graph.mp4",0,11300694,"10.8 MB",1373545696,"7/11/13, 6:28:16 PM");</script>
+<script>addRow("077.Creating a 3D Graph.mp4","077.Creating%20a%203D%20Graph.mp4",0,5800557,"5.5 MB",1373545702,"7/11/13, 6:28:22 PM");</script>
+<script>addRow("078.Creating a Graph Design.mp4","078.Creating%20a%20Graph%20Design.mp4",0,11698686,"11.2 MB",1373545710,"7/11/13, 6:28:30 PM");</script>
+<script>addRow("079.Placing Images.mp4","079.Placing%20Images.mp4",0,24908235,"23.8 MB",1373545756,"7/11/13, 6:29:16 PM");</script>
+<script>addRow("080.Working with Embedded Images.mp4","080.Working%20with%20Embedded%20Images.mp4",0,13577353,"12.9 MB",1373545802,"7/11/13, 6:30:02 PM");</script>
+<script>addRow("081.Packaging Files.mp4","081.Packaging%20Files.mp4",0,15992116,"15.3 MB",1373545860,"7/11/13, 6:31:00 PM");</script>
+<script>addRow("082.Image Trace.mp4","082.Image%20Trace.mp4",0,32568817,"31.1 MB",1373545954,"7/11/13, 6:32:34 PM");</script>
+</body></html>

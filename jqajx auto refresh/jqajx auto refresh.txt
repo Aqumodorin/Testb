@@ -1,0 +1,3 @@
+Auto Refresh Div Content Using jQuery and AJAX
+117113 views Dec 21 2015 613 51 SHARE SAVE
+https://www.youtube.com/watch?v=a1aGlaA4kQQ

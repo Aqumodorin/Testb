@@ -1,0 +1,11 @@
+
+problem was selinux
+https://www.drupal.org/forum/support/installing-drupal/2018-02-13/solved-the-directory-sitesdefaultfiles-is-not-writable
+
+
+How to Disable SELinux on CentOS 7 | Linuxize
+
+https://linuxize.com/post/how-to-disable-selinux-on-centos-7/
+
+
+https://www.google.com/search?q=disabling+selinux+centos+7&rlz=1C1GCEA_enBD862BD862&oq=Disabling+SELinux+&aqs=chrome.1.69i57j0l7.4813j0j7&sourceid=chrome&ie=UTF-8

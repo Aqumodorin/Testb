@@ -1,0 +1,6 @@
+https://www.w3schools.com/html/html_iframe.asp
+
+https://www.google.com/search?q=load+a+particular+part+of+page+jquery&rlz=1C1GCEA_enBD862BD862&sxsrf=ALeKk01goqRlSLuprJ8PJrqu5qTjSiy6WQ:1583067627012&source=lnms&tbm=vid&sa=X&ved=2ahUKEwi_0sC8qvnnAhWB6nMBHW6IB60Q_AUoAXoECGYQAw&biw=1333&bih=605
+
+
+https://openclassrooms.com/en/courses/3523281-make-javascript-easier-with-jquery/3876776-load-page-portions-via-ajax

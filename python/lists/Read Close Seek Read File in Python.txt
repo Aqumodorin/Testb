@@ -1,0 +1,55 @@
+
+C:\Users\tester\Desktop\practice\python\lists
+λ pwd
+/c/Users/tester/Desktop/practice/python/lists
+
+C:\Users\tester\Desktop\practice\python\lists
+λ python
+Python 2.7.17 (v2.7.17:c2f86d86e6, Oct 19 2019, 21:01:17) [MSC v.1500 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> file = open('test.txt')
+>>> file.read()
+'This is File'
+>>> file.read()
+''
+>>> file.read()
+''
+>>> file.seek()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: seek() takes at least 1 argument (0 given)
+>>> file.seek(0)
+>>> file.read()
+'This is File'
+>>> file = close('test.txt')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'close' is not defined
+>>> file.close()
+>>> file.read()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file
+>>> file.read()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file
+>>> file = open('test.txt')
+>>> file.read()
+'This is File'
+>>> file.read()
+''
+>>> file.seek(0)
+>>> file.read()
+'This is File'
+>>> file.read()
+''
+>>> file.seek(0)
+>>> file.read()
+'This is File'
+>>> file.read()
+''
+>>> file.seek(1)
+>>> file.read()
+'his is File'
+>>>

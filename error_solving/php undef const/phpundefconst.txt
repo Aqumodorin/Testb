@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/2941169/what-does-the-php-error-message-notice-use-of-undefined-constant-mean
+
+https://stackoverflow.com/questions/54158160/how-to-fix-warning-use-of-undefined-constant-id-assumed-id-this-will-throw

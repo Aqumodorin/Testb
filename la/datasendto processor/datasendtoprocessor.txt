@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/406316/how-to-pass-data-from-javascript-to-php-and-vice-versa

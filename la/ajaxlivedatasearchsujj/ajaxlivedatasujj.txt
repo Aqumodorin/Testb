@@ -1,0 +1,3 @@
+https://www.webslesson.info/2018/07/autocomplete-search-box-using-typeahead-in-codeigniter.html
+
+https://gist.github.com/hofmannsven/9164408

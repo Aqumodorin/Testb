@@ -1,0 +1,3 @@
+https://www.w3schools.com/jquery/jquery_ajax_load.asp
+
+https://www.w3schools.com/jquery/jquery_ajax_get_post.asp

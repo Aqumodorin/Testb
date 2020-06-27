@@ -1,0 +1,9 @@
+http://smarc.test/
+
+cj82fKJU5X06qM3SdHrGkhu1zPVBaFDt4xepO
+Asia/Dhaka
+
+You can login now using the following credential:
+
+Username: owner (owner@tecdiary.com)
+Password: Owner123

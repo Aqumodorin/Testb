@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/44309735/bootstrap-token-field-with-auto-complete-with-ajax-not-working-on-remote

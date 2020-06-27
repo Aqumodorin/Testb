@@ -1,0 +1,6 @@
+var b = document.getElementById('select2-chosen-2');
+undefined
+var a = document.getElementById('reqfrom84347hu9');
+undefined
+a = a.value = b.innerText
+"Warehouse 1"

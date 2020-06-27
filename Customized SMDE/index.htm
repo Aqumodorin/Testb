@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick installation and start of SMDE</title>
+    <link rel="stylesheet" href="css/simplemde.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+</head>
+<body>
+    <textarea name="" id="MyID" cols="30" rows="10"></textarea>
+</body>
+<script src="js/simplemde.js"></script>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("MyID") });
+    simplemde.value("This text will appear in the editor");
+</script>
+</html>

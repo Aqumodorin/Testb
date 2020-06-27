@@ -1,0 +1,32 @@
+https://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/
+
+https://phoenixnap.com/kb/install-apache-on-centos-7
+
+
+https://linuxconfig.org/how-to-install-php-on-redhat-8
+
+8 - How to configure Apache Server on CentOS 7
+559 views•Jul 28, 2016
+
+4
+
+1
+
+SHARE
+
+SAVE
+
+
+ITSTAR. VN
+710 subscribers
+https://www.youtube.com/watch?v=vys3vwUqV1Q
+
+https://serversforhackers.com/c/apache-and-php-fpm
+
+
+https://tecadmin.net/install-apache-php-fpm-centos-8/
+
+https://stackoverflow.com/questions/30267329/how-do-i-run-phps-built-in-web-server-in-the-background
+
+
+https://serversforhackers.com/c/php-fpm-configuration-the-listen-directive

