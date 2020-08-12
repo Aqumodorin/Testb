@@ -1,0 +1,10 @@
+/^\<\?|php/gm
+
+match
+<?php
+
+/^\<\?php/g
+
+<?php
+<?php <?php<?php
+<?php<?php<?php
