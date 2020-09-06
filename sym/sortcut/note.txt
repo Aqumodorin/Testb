@@ -1,0 +1,2 @@
+shortcut on win 10 only work if binded file some how present name change does'nt matter
+i am not sure this works on xp or 7

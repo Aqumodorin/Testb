@@ -1,0 +1,5 @@
+shutdown -h now command is important
+
+fdisk uses works cool
+
+remount using mount to mnt after write partition works fine 

@@ -1,0 +1,241 @@
+Microsoft Windows [Version 10.0.19041.450]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd /
+
+C:\>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 06A4-A6CE
+
+ Directory of C:\
+
+11/05/2019  01:08 PM    <DIR>          Bitnami
+07/11/2020  01:32 AM    <DIR>          emu8086
+10/26/2019  01:22 AM    <DIR>          Intel
+08/15/2020  12:51 PM    <DIR>          JDownloader 2.0
+01/08/2020  12:42 AM    <DIR>          My Web Sites
+12/07/2019  03:14 PM    <DIR>          PerfLogs
+08/20/2020  04:13 PM    <DIR>          PortableApps
+08/26/2020  09:24 PM    <DIR>          Program Files
+08/23/2020  06:59 PM    <DIR>          Program Files (x86)
+11/05/2019  04:38 PM    <DIR>          Python27
+01/23/2020  07:18 PM    <DIR>          python38
+08/26/2020  12:15 PM    <DIR>          Strawberry
+08/28/2020  09:34 PM    <SYMLINKD>     test [C:\Users\tester\Desktop\testsym\]
+06/25/2020  04:18 PM    <DIR>          tools
+08/23/2020  03:55 PM    <DIR>          Users
+09/28/2019  03:08 AM    <DIR>          usr
+07/07/2020  12:36 PM    <DIR>          WATCOM
+08/26/2020  10:03 PM    <DIR>          Windows
+08/20/2019  05:25 PM    <DIR>          Winginx
+               0 File(s)              0 bytes
+              19 Dir(s)   7,238,066,176 bytes free
+
+C:\>cd Users
+
+C:\Users>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 06A4-A6CE
+
+ Directory of C:\Users
+
+08/23/2020  03:55 PM    <DIR>          .
+08/23/2020  03:55 PM    <DIR>          ..
+04/21/2020  09:47 PM    <DIR>          Administrator
+04/21/2020  09:47 PM    <DIR>          DefaultAccount
+04/21/2020  09:47 PM    <DIR>          defaultuser0
+04/21/2020  09:47 PM    <DIR>          Guest
+08/24/2020  05:48 AM    <DIR>          Public
+08/27/2020  02:20 PM    <DIR>          tester
+04/21/2020  09:47 PM    <DIR>          WDAGUtilityAccount
+               0 File(s)              0 bytes
+               9 Dir(s)   7,238,021,120 bytes free
+
+C:\Users>cd tester
+
+C:\Users\tester>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\tester>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 06A4-A6CE
+
+ Directory of C:\Users\tester
+
+08/27/2020  02:20 PM    <DIR>          .
+08/27/2020  02:20 PM    <DIR>          ..
+08/28/2020  09:43 PM             5,344 .bash_history
+06/05/2020  12:05 PM    <DIR>          .dotnet
+01/12/2020  09:01 PM                58 .gitconfig
+01/27/2020  03:34 PM               708 .htaccess
+06/29/2020  09:49 PM    <DIR>          .idlerc
+08/20/2019  12:51 PM                34 .minttyrc
+09/29/2019  07:52 PM    <DIR>          .ngrok2
+02/11/2020  04:05 PM               155 .node_repl_history
+06/06/2020  10:39 PM    <DIR>          .nuget
+11/14/2019  10:19 PM                62 .php_history
+02/11/2020  10:15 PM    <DIR>          .ssh
+10/03/2019  02:56 PM    <DIR>          .thumbnails
+07/02/2020  06:56 PM             1,495 .viminfo
+08/28/2020  07:30 PM    <DIR>          .VirtualBox
+07/01/2020  09:03 PM    <DIR>          .vscode
+10/07/2019  12:08 AM               121 .yarnrc
+08/23/2020  04:02 PM    <DIR>          3D Objects
+08/23/2020  04:02 PM    <DIR>          Contacts
+03/19/2020  07:01 PM    <DIR>          Creative Cloud Files
+08/28/2020  09:32 PM    <DIR>          Desktop
+08/23/2020  04:02 PM    <DIR>          Documents
+08/28/2020  05:05 PM    <DIR>          Downloads
+08/23/2020  04:02 PM    <DIR>          Favorites
+08/23/2020  04:02 PM    <DIR>          Links
+01/12/2020  09:01 PM                50 mercurial.ini
+08/23/2020  04:02 PM    <DIR>          Music
+06/26/2020  06:30 PM    <DIR>          OneDrive
+01/23/2020  01:11 AM    <DIR>          PhpstormProjects
+08/28/2020  07:09 PM    <DIR>          Pictures
+08/23/2020  04:02 PM    <DIR>          Saved Games
+08/23/2020  04:02 PM    <DIR>          Searches
+09/23/2019  01:33 PM    <DIR>          source
+08/23/2020  04:02 PM    <DIR>          Videos
+08/27/2020  11:53 PM    <DIR>          VirtualBox VMs
+               9 File(s)          8,027 bytes
+              27 Dir(s)   7,238,021,120 bytes free
+
+C:\Users\tester>cd Docu*
+
+C:\Users\tester\Documents>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\tester\Documents>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 06A4-A6CE
+
+ Directory of C:\Users\tester\Documents
+
+08/23/2020  04:02 PM    <DIR>          .
+08/23/2020  04:02 PM    <DIR>          ..
+02/08/2020  09:35 AM    <DIR>          .vs
+08/19/2020  08:51 PM    <DIR>          10MV
+03/21/2020  12:20 AM         4,698,396 aadiaat.blogspot.com 15 pseudo sci.pdf
+02/12/2020  10:57 PM    <DIR>          adminer
+11/01/2019  12:10 AM    <DIR>          Adobe
+10/03/2019  10:02 AM    <DIR>          application letter
+08/18/2019  09:06 PM    <DIR>          Ashampoo Burning Studio 20
+10/11/2019  10:59 AM    <DIR>          Audacity
+02/28/2019  03:26 PM            38,351 awesome-some.zip
+06/14/2020  11:20 AM    <DIR>          Bandicut
+08/20/2019  04:45 PM    <DIR>          banglaword
+10/01/2019  09:17 PM    <DIR>          bkeymap
+10/07/2019  12:05 AM    <DIR>          blockchain
+05/30/2020  10:58 AM    <DIR>          BluffTitler
+08/20/2020  04:29 PM    <DIR>          brave-portable-win32-1.12.112-62
+10/24/2019  07:36 PM    <DIR>          Camtasia
+10/19/2019  04:05 PM    <DIR>          ccp
+11/07/2019  01:51 PM    <DIR>          certifucate from udemy.com
+06/25/2020  12:59 AM    <DIR>          cheatsheets.pdf-master
+05/11/2020  04:00 PM    <DIR>          client
+11/05/2019  12:05 PM    <DIR>          clone
+01/25/2020  06:44 PM    <DIR>          cm
+02/27/2017  09:22 AM         4,770,816 Code.zip
+05/27/2020  07:56 PM    <DIR>          CrypTool 2 Projects
+05/27/2020  07:58 PM    <DIR>          CrypTool 2.1 (Nightly Build 8853.2)
+09/16/2019  09:25 PM    <DIR>          Custom Office Templates
+10/17/2019  02:19 PM    <DIR>          cvexp2019
+08/06/2020  02:36 PM    <DIR>          cvme
+08/20/2020  01:15 PM    <DIR>          Documents
+06/06/2020  11:39 PM    <DIR>          DotNet2020
+07/13/2020  11:15 AM    <DIR>          ebook
+10/26/2019  06:14 PM    <DIR>          Ebook Misc
+10/26/2019  06:27 PM    <DIR>          Ebook Prog
+10/26/2019  06:13 PM    <DIR>          Ebook Zim
+06/24/2020  12:32 PM    <DIR>          EEE OneDrive_1_6-24-2020
+08/20/2020  03:10 PM    <DIR>          EGDownloads
+10/23/2019  01:06 AM         2,158,371 extensions.zip
+06/09/2020  09:04 PM    <DIR>          Fiddler2
+06/01/2020  02:26 AM    <DIR>          Freemake
+05/05/2020  12:22 PM    <DIR>          fxsound setting
+10/19/2019  02:30 AM    <DIR>          getpost
+06/24/2020  04:26 PM    <DIR>          Hacking And Cyber Security Ebooks OneDrive_2020-06-24
+10/26/2019  07:32 PM    <DIR>          HtmlCompiler
+02/19/2020  07:27 PM    <DIR>          htms
+07/13/2020  07:41 PM    <DIR>          inslog
+08/18/2020  10:42 AM    <DIR>          jsprof
+08/14/2020  12:08 PM    <DIR>          kb
+08/28/2020  09:38 PM    <DIR>          lara7
+06/25/2020  06:57 PM    <DIR>          laragon
+08/19/2020  11:06 PM    <DIR>          My ISO Files
+02/28/2019  03:26 PM            40,843 newsimpletheme.zip
+10/20/2019  06:57 AM    <DIR>          nginx-1.16.1
+09/30/2019  06:44 PM    <DIR>          ngrok-stable-windows-amd64
+10/07/2019  01:24 AM    <DIR>          njs
+10/18/2019  06:50 PM    <DIR>          Object Oriented Programming
+10/17/2019  04:01 PM    <DIR>          outer
+06/09/2020  02:47 PM    <DIR>          Patch Cleaner Backup
+11/01/2019  08:58 AM    <DIR>          photoshop documents
+09/20/2019  09:44 AM    <DIR>          php-7.3.8-nts-Win32-VC15-x64
+08/06/2019  06:10 PM        25,582,183 php-7.3.8-nts-Win32-VC15-x64.zip
+08/16/2020  12:44 PM         5,366,632 PortableApps.com_Platform_Setup_17.0.1.paf.exe
+01/30/2020  11:32 AM    <DIR>          print
+08/18/2019  10:00 AM    <DIR>          Rainmeter
+10/17/2019  02:31 AM    <DIR>          router
+11/04/2019  01:17 AM               871 Start Tor Browser.lnk
+05/24/2020  05:28 PM    <DIR>          steghide-0.5.1-win32
+08/24/2019  06:14 PM    <DIR>          stemo
+10/05/2019  03:03 PM    <DIR>          stickymenu
+08/20/2020  01:20 PM    <DIR>          tab1
+01/20/2020  02:28 PM    <DIR>          targetlist
+08/24/2019  06:00 PM    <DIR>          Tor Browser
+09/25/2019  03:00 PM    <DIR>          Visual Studio 2019
+06/22/2020  02:41 PM    <DIR>          WinAutomation
+08/16/2019  12:39 AM    <DIR>          WindowsPowerShell
+08/25/2020  12:15 AM    <DIR>          Wondershare Filmora 9
+08/17/2019  07:19 PM    <DIR>          works
+05/04/2020  01:57 PM    <DIR>          Xilisoft Corporation
+10/18/2019  12:23 AM    <DIR>          yeslist
+12/21/2019  07:28 PM    <DIR>          youtube
+               8 File(s)     42,656,463 bytes
+              73 Dir(s)   7,238,021,120 bytes free
+
+C:\Users\tester\Documents>cd lara7
+
+C:\Users\tester\Documents\lara7>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 06A4-A6CE
+
+ Directory of C:\Users\tester\Documents\lara7
+
+08/28/2020  09:38 PM    <DIR>          .
+08/28/2020  09:38 PM    <DIR>          ..
+08/28/2020  09:38 PM    <DIR>          sym
+08/13/2020  03:31 AM    <DIR>          test
+               0 File(s)              0 bytes
+               4 Dir(s)   7,237,783,552 bytes free
+
+C:\Users\tester\Documents\lara7>mklink /d test sym
+Cannot create a file when that file already exists.
+
+C:\Users\tester\Documents\lara7>mklink /d aym test
+symbolic link created for aym <<===>> test
+
+C:\Users\tester\Documents\lara7>mklink /d C:\Users\tester\Desktop\testsym\lara7\test\ test
+The system cannot find the path specified.
+
+C:\Users\tester\Documents\lara7>mklink /d C:\Users\tester\Desktop\testsym\ test
+Cannot create a file when that file already exists.
+
+C:\Users\tester\Documents\lara7>mklink /d C:\Users\tester\Desktop\testsym\test test
+symbolic link created for C:\Users\tester\Desktop\testsym\test <<===>> test
+
+C:\Users\tester\Documents\lara7>mklink /d C:\Users\tester\Desktop\testsym\test test
+symbolic link created for C:\Users\tester\Desktop\testsym\test <<===>> test
+
+C:\Users\tester\Documents\lara7>mklink /d C:\Users\tester\Desktop\testsym\test \test\
+symbolic link created for C:\Users\tester\Desktop\testsym\test <<===>> \test\
+
+with this when sym clicked it's open and open and it opening untill clicking

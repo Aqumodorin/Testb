@@ -1,0 +1,8 @@
+symlink was useful and flexible they not like wine dose shortcut
+
+when symlinking keep in mind that you need to type like symfile.ext file.ext
+otherwise it will make hard link
+
+not direct copy file symlink it will make hardlink
+
+in case of different directory use fullpath for both 
