@@ -1,0 +1,45 @@
+
+this is testarray(21) {
+  ["DOCUMENT_ROOT"]=>
+  string(37) "C:\Users\tester\Desktop\practice\info"
+  ["REMOTE_ADDR"]=>
+  string(9) "127.0.0.1"
+  ["REMOTE_PORT"]=>
+  string(5) "51279"
+  ["SERVER_SOFTWARE"]=>
+  string(29) "PHP 7.3.10 Development Server"
+  ["SERVER_PROTOCOL"]=>
+  string(8) "HTTP/1.1"
+  ["SERVER_NAME"]=>
+  string(5) "r.out"
+  ["SERVER_PORT"]=>
+  string(2) "80"
+  ["REQUEST_URI"]=>
+  string(14) "/test/test.php"
+  ["REQUEST_METHOD"]=>
+  string(3) "GET"
+  ["SCRIPT_NAME"]=>
+  string(14) "/test/test.php"
+  ["SCRIPT_FILENAME"]=>
+  string(51) "C:\Users\tester\Desktop\practice\info\test\test.php"
+  ["PHP_SELF"]=>
+  string(14) "/test/test.php"
+  ["HTTP_HOST"]=>
+  string(5) "r.out"
+  ["HTTP_CONNECTION"]=>
+  string(10) "keep-alive"
+  ["HTTP_UPGRADE_INSECURE_REQUESTS"]=>
+  string(1) "1"
+  ["HTTP_USER_AGENT"]=>
+  string(110) "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
+  ["HTTP_ACCEPT"]=>
+  string(124) "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+  ["HTTP_ACCEPT_ENCODING"]=>
+  string(13) "gzip, deflate"
+  ["HTTP_ACCEPT_LANGUAGE"]=>
+  string(23) "en-US,en;q=0.9,bn;q=0.8"
+  ["REQUEST_TIME_FLOAT"]=>
+  float(1601031825.0341)
+  ["REQUEST_TIME"]=>
+  int(1601031825)
+}

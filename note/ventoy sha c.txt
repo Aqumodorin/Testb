@@ -1,0 +1,5 @@
+SHA-256
+
+ventoy-1.0.22-windows.zip:   6fae2b19406cda24c516b66228e31a0ac07703a5ed8b530c21f5bf5827ac9467
+ventoy-1.0.22-linux.tar.gz:  e7d16d14dd3fb067c3b42574d2ffc7356b6e36dab71ae060e336ce89fb9a1d3e
+ventoy-1.0.22-livecd.iso:    a45715ee67784d87306cec1ed7756a3303973ef7995105caeefb61f2e2cc4e2d
